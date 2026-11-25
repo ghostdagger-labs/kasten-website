@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy policy — Kasten</title>
+  <meta name="description" content="How Kasten by GHOSTDAGGER handles wallet data, network requests, connected websites, and support correspondence. Contact support@ghostdagger.dev.">
+  <meta name="theme-color" content="#0b1512">
+  <link rel="canonical" href="https://getkasten.com/privacy">
+  <link rel="icon" href="/assets/kasten.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Kasten home"><img src="/assets/kasten.svg" alt="" width="38" height="38">kasten</a>
+      <nav class="site-nav" aria-label="Main navigation"><a href="/privacy" aria-current="page">Privacy</a><a href="/support">Support</a></nav>
+    </header>
+    <main id="main">
+      <div class="page-intro">
+        <div class="eyebrow">Privacy / Kasten Chrome extension</div>
+        <h1>Your privacy,<br>in plain language.</h1>
+        <p class="lead">Your keys stay on your device. Using a public network still involves sharing some information. Here is what Kasten handles, why, and what you control.</p>
+        <div class="meta"><span>Privacy policy · November 25, 2026</span><span>Publisher: GHOSTDAGGER</span></div>
+      </div>
+      <div class="summary-strip" aria-label="Privacy at a glance">
+        <div><strong>Keys stay local</strong><p>Wallet secrets are processed on your device.</p></div>
+        <div><strong>No advertising or analytics</strong><p>The extension includes neither service.</p></div>
+        <div><strong>Network requests are disclosed</strong><p>Nodes and services receive data needed to work.</p></div>
+      </div>
+      <div class="document-layout">
+        <nav class="contents" aria-label="Privacy policy contents">
+          <h2>On this page</h2>
+          <ol><li><a href="#scope">Who we are</a></li><li><a href="#device">On your device</a></li><li><a href="#network">Network services</a></li><li><a href="#sites">Connected websites</a></li><li><a href="#permissions">Browser permissions</a></li><li><a href="#website">Website &amp; email</a></li><li><a href="#choices">Retention &amp; choices</a></li><li><a href="#commitments">Data use</a></li><li><a href="#contact">Changes &amp; contact</a></li></ol>
+        </nav>
+        <div class="article">
+          <section id="scope">
+            <h2>1. Who we are and what this covers</h2>
+            <p><strong>GHOSTDAGGER publishes Kasten</strong>, an independent, self-custody Kaspa wallet. This policy covers the Kasten Chrome extension, these pages at getkasten.com, and support correspondence with GHOSTDAGGER. Other applications and third-party websites may have different privacy practices.</p>
+            <p>Kasten does not require a GHOSTDAGGER account. GHOSTDAGGER does not operate a wallet backend that receives your recovery phrase, private keys, or wallet password. Contact us at <a href="mailto:support@ghostdagger.dev">support@ghostdagger.dev</a> with privacy questions.</p>
+          </section>
+          <section id="device">
+            <h2>2. Information on your device</h2>
+            <h3>Wallet secrets</h3>
+            <p>Recovery phrases, private wallet material, and passwords are processed locally. The Kaspa wallet SDK encrypts wallet records with your wallet password and stores them in this Chrome profile. Kasten does not transmit these secrets to GHOSTDAGGER, connected websites, or network services, and does not save passwords or recovery phrases as plaintext preferences.</p>
+            <p>While unlocked, the extension holds the material needed to operate your wallet in memory. Locking or ending the wallet runtime clears that active session. Encryption protects the stored wallet record; it does not make a compromised device safe.</p>
+            <h3>Wallet settings and activity</h3>
+            <p>Kasten also stores wallet nicknames, public account and address information, preferences, contacts, transaction-history caches, website connection permissions, and the website origin associated with a website-requested transfer. This operational metadata is not all encrypted like the private wallet record. It lets Kasten display your wallets, remember your choices, and attribute requests.</p>
+            <p>Kasten uses extension-local storage rather than Chrome sync. It does not synchronize wallets between installations. Browser session storage holds pending-approval metadata without wallet secrets. Onboarding and send drafts stay in memory and clear when completed, cancelled, locked, or when their runtime ends.</p>
+          </section>
+          <section id="network">
+            <h2>3. Information sent to network services</h2>
+            <p>Kasten connects directly to third-party services to provide wallet functionality. These services can observe your IP address and connection metadata, as well as the public blockchain information included in a request. <strong>A public address is not a private key, but it can reveal financial activity.</strong></p>
+            <dl class="service-list">
+              <div><dt>Kaspa resolvers and nodes</dt><dd>The SDK uses public resolvers to discover nodes. Node connections provide network status, address monitoring, balances, fees, and transaction submission. Depending on the operation, the node receives relevant public addresses or a signed transaction. Node operators vary with the resolver’s selection.</dd></div>
+              <div><dt>Kaspa explorer services</dt><dd>Choosing “Discover older history” and confirming its disclosure sends derived public receive and change addresses to <code>api.kaspa.org</code> or <code>api-tn10.kaspa.org</code>, depending on the network. Opening a transaction in an explorer sends its public transaction ID to <code>explorer.kaspa.org</code> or <code>explorer-tn10.kaspa.org</code>.</dd></div>
+              <div><dt>CoinGecko</dt><dd>When USD estimates are enabled on Mainnet, Kasten requests public Kaspa market data from <code>api.coingecko.com</code>. This request does not include wallet addresses, balances, passwords, or recovery phrases. CoinGecko can still observe connection metadata such as your IP address. USD estimates are enabled by default and can be turned off in Settings → Appearance.</dd></div>
+              <div><dt>The public Kaspa network</dt><dd>Broadcasting publishes a signed transaction, including public addresses and amounts, to the network. Blockchain records are public and may be retained indefinitely. GHOSTDAGGER cannot remove them.</dd></div>
+            </dl>
+            <p>These providers handle information under their own practices. GHOSTDAGGER does not control their logs, retention, or the public blockchain. Kasten does not upload your full local wallet database to them.</p>
+          </section>
+          <section id="sites">
+            <h2>4. Websites you connect</h2>
+            <p>Kasten makes its wallet provider available to top-level HTTPS pages so compatible websites can discover the extension. Discovery can reveal that Kasten is installed. It does not by itself authorize a website or disclose your account.</p>
+            <p>After you explicitly approve a connection, that website can access the selected public address and balance, learn the authorized network, and request a native KAS transfer. A transfer requires a separate Kasten approval and your wallet password. The requesting website receives the resulting transaction IDs, never your password or recovery phrase.</p>
+            <p>Kasten records the authorized site’s origin and permission details locally. You can revoke one connection or all connections from <strong>Sites</strong>. Revocation prevents future authorized access but cannot erase information a website already received or a transaction already broadcast. Connected websites have their own privacy policies.</p>
+          </section>
+          <section id="permissions">
+            <h2>5. Browser, camera, and clipboard access</h2>
+            <p>Tab URL and document information help Kasten verify which website is requesting access, show current-tab connection status, and cancel approvals after navigation. Kasten does not build or upload a general browsing-history database or upload your connected-site list.</p>
+            <p>Browser idle and lock signals trigger wallet locking. Alarms expire unanswered approval requests. An offscreen extension document runs the packaged wallet SDK while the popup is closed; locking ends that wallet runtime.</p>
+            <p>Camera and clipboard features operate through your explicit actions. QR images are decoded locally and are not uploaded. Kasten supports copying addresses and payment requests, and pasting a recovery phrase during restoration. Recovery-word copying from the generated-phrase screen is disabled.</p>
+          </section>
+          <section id="website">
+            <h2>6. This website and support emails</h2>
+            <p><strong>Website hosting.</strong> This website uses Vercel for hosting. When you visit, Vercel receives ordinary web-request information such as your IP address, requested URL, browser information, and request time to deliver and secure the site. Its infrastructure may retain operational and security logs. See <a href="https://vercel.com/legal/privacy-notice">Vercel’s privacy notice</a>.</p>
+            <p>These pages do not add advertising, analytics scripts, tracking pixels, or application cookies. Fonts and images are served from the site itself. Following a link to another website subjects that visit to the other site’s practices.</p>
+            <p><strong>Support correspondence.</strong> If you email <a href="mailto:support@ghostdagger.dev">support@ghostdagger.dev</a>, GHOSTDAGGER and the email providers handling the correspondence receive your email address, message, email metadata, and any attachments or details you choose to include. We use that information to respond, investigate problems, and maintain the security and reliability of Kasten. Public addresses and transaction IDs you send may link your identity to blockchain activity.</p>
+            <div class="note"><strong>Keep wallet secrets out of support messages.</strong><p>Never send a recovery phrase, private key, wallet password, or wallet backup file. Redact sensitive information from screenshots and logs. Support will never ask for these secrets.</p></div>
+          </section>
+          <section id="choices">
+            <h2>7. Retention, deletion, and your choices</h2>
+            <ul>
+              <li><strong>Local data:</strong> wallet records and settings remain in your Chrome profile until removed. Removing a wallet deletes its encrypted record and disables its usable site grants. Shared settings or contacts may remain. Uninstalling removes extension-local storage from that profile; separately retained device backups are outside Kasten’s control.</li>
+              <li><strong>Optional requests:</strong> turn off USD estimates in Settings → Appearance, decline older-history discovery, and avoid opening explorer links to limit those requests. Core wallet networking is needed for current balances and transfers.</li>
+              <li><strong>Website permissions:</strong> review and revoke connections in Sites. You can also manage browser camera permissions through Chrome.</li>
+              <li><strong>Support records:</strong> we retain correspondence for as long as needed to handle the request, related follow-up, and applicable security or legal obligations. You can request access, correction, or deletion of information GHOSTDAGGER holds by emailing support.</li>
+              <li><strong>Third-party and public data:</strong> GHOSTDAGGER cannot delete blockchain records or data independently held by nodes, explorers, connected websites, or other service providers.</li>
+            </ul>
+            <p>Depending on your location, you may have additional rights concerning your personal information. Contact us to make a request. We may need to verify that a request concerns your information; <strong>we will not ask for wallet secrets to do so</strong>.</p>
+            <p>Back up your recovery phrase securely before deleting local data. GHOSTDAGGER cannot recover a forgotten wallet password or a lost phrase.</p>
+          </section>
+          <section id="commitments">
+            <h2>8. How we use and share data</h2>
+            <p>Kasten contains no advertising or analytics service. GHOSTDAGGER does not sell user data, use wallet information for advertising, or transfer it for unrelated purposes. Information is handled for the wallet features, hosting, support, and security purposes described above.</p>
+            <p>Service providers process information needed to deliver those functions. GHOSTDAGGER may disclose information it holds when required by law or when necessary to address fraud, abuse, or a security incident. We do not hold your private wallet keys or recovery phrase.</p>
+            <p>Kasten’s use of information received from Chrome APIs follows the <a href="https://developer.chrome.com/docs/webstore/program-policies/policies">Chrome Web Store User Data Policy</a>, including its Limited Use requirements.</p>
+          </section>
+          <section id="contact">
+            <h2>9. Policy changes and contact</h2>
+            <p>We will update this page when Kasten’s practices change and revise the policy date. Where a change requires additional notice or consent, we will provide it before the relevant new use.</p>
+            <p><strong>Publisher:</strong> GHOSTDAGGER<br><strong>Privacy and support:</strong> <a href="mailto:support@ghostdagger.dev">support@ghostdagger.dev</a><br><strong>Help:</strong> <a href="/support">Kasten support</a></p>
+          </section>
+        </div>
+      </div>
+    </main>
+    <footer class="site-footer"><p>© 2026 <strong>GHOSTDAGGER</strong><br>Independent software for Kaspa.</p><nav aria-label="Footer navigation"><a href="/privacy" aria-current="page">Privacy policy</a><a href="/support">Support</a><a href="https://ghostdagger.dev">GHOSTDAGGER <span aria-hidden="true">↗</span></a></nav></footer>
+  </div>
+</body>
+</html>

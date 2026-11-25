@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+<defs>
+<linearGradient id="lbPlate" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#3EE0BD"></stop><stop offset="1" stop-color="#0FB894"></stop></linearGradient>
+<linearGradient id="lbInkFace" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#164A41"></stop><stop offset="1" stop-color="#051C18"></stop></linearGradient>
+</defs>
+<rect width="1024" height="1024" fill="url(#lbInkFace)"></rect>
+<rect x="150" y="150" width="724" height="724" rx="120" fill="#FFFFFF" fill-opacity=".03"></rect>
+<rect x="150" y="150" width="724" height="724" rx="120" fill="none" stroke="#FFFFFF" stroke-opacity=".14" stroke-width="12"></rect>
+<rect x="84" y="296" width="52" height="140" rx="22" fill="#E3ECE8"></rect>
+<rect x="84" y="588" width="52" height="140" rx="22" fill="#E3ECE8"></rect>
+<circle cx="230" cy="230" r="18" fill="#FFFFFF" opacity=".28"></circle><circle cx="794" cy="230" r="18" fill="#FFFFFF" opacity=".28"></circle>
+<circle cx="230" cy="794" r="18" fill="#FFFFFF" opacity=".28"></circle><circle cx="794" cy="794" r="18" fill="#FFFFFF" opacity=".28"></circle>
+<rect x="392" y="362" width="240" height="320" rx="58" fill="#000000" opacity=".3"></rect>
+<rect x="392" y="350" width="240" height="320" rx="58" fill="url(#lbPlate)"></rect>
+<circle cx="512" cy="470" r="42" fill="#06201B"></circle>
+<rect x="491" y="488" width="42" height="104" rx="21" fill="#06201B"></rect>
+</svg>
