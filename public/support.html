@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Support — Kasten</title>
-  <meta name="description" content="Get help with Kasten, the self-custody Kaspa wallet by GHOSTDAGGER. Troubleshoot recovery, network connections, and transfers. Email support@ghostdagger.dev.">
+  <meta name="description" content="Get help with Kasten, the self-custody Kaspa wallet by GHOSTDAGGER. Find guidance on recovery, network connections, and transfers.">
   <meta name="theme-color" content="#0b1512">
   <link rel="canonical" href="https://getkasten.com/support">
   <link rel="icon" href="/assets/kasten.svg" type="image/svg+xml">
@@ -21,16 +21,15 @@
       <div class="page-intro">
         <div class="eyebrow">Support / Kasten Chrome extension</div>
         <h1>Help with<br>your wallet.</h1>
-        <p class="lead">Find an answer below or contact GHOSTDAGGER. We can help troubleshoot Kasten while your wallet secrets stay with you.</p>
+        <p class="lead">Find guidance on recovery, connections, and transfers. Keep your wallet secrets private while troubleshooting.</p>
       </div>
       <div class="support-top">
         <section class="contact-panel" aria-labelledby="contact-title">
-          <div class="eyebrow">Contact GHOSTDAGGER</div>
-          <h2 id="contact-title">Let’s work through it.</h2>
-          <p>Questions, bug reports, and privacy requests:</p>
-          <a class="email" href="mailto:support@ghostdagger.dev">support@ghostdagger.dev</a>
-          <div class="actions"><a class="button" href="mailto:support@ghostdagger.dev?subject=Kasten%20support">Email support <span aria-hidden="true">↗</span></a></div>
-          <p class="fine">Opens your email app. Support is provided by email; no response time is guaranteed.</p>
+          <div class="eyebrow">Kasten help</div>
+          <h2 id="contact-title">Start with the essentials.</h2>
+          <p>Browse answers about wallet recovery, balances, connections, and transfers.</p>
+          <div class="actions"><a class="button" href="#answers">Browse common questions <span aria-hidden="true">↓</span></a></div>
+          <p class="fine">Direct contact is temporarily unavailable on this website.</p>
         </section>
         <section class="safety-panel" aria-labelledby="secrets-title">
           <h2 id="secrets-title">Your recovery phrase<br>is never a support detail.</h2>
@@ -38,21 +37,21 @@
         </section>
       </div>
       <div class="document-layout">
-        <nav class="contents" aria-label="Support contents"><h2>Find your answer</h2><ol><li><a href="#report">Report a problem</a></li><li><a href="#answers">Common questions</a></li><li><a href="#security">Security concerns</a></li><li><a href="#privacy">Privacy requests</a></li></ol></nav>
+        <nav class="contents" aria-label="Support contents"><h2>Find your answer</h2><ol><li><a href="#report">Troubleshooting details</a></li><li><a href="#answers">Common questions</a></li><li><a href="#security">Security concerns</a></li><li><a href="#privacy">Privacy requests</a></li></ol></nav>
         <div class="article">
           <section id="report">
-            <h2>Make your report useful.</h2>
-            <p>Tell us what you expected, what happened instead, and how to reproduce it. When relevant, include:</p>
-            <ul><li>Your Kasten version, Chrome version, and operating system. Find the extension version in Chrome’s extension manager under Kasten → Details.</li><li>Whether you are using Mainnet or Testnet-10, and the popup or expanded wallet view.</li><li>The exact error message and a screenshot with sensitive information removed.</li><li>A public transaction ID only if needed and you are comfortable linking that blockchain activity to your email.</li></ul>
-            <p>Keep wallet secrets, backup files, unrelated account details, and unredacted logs out of your message. We do not need remote access to your device.</p>
+            <h2>Keep useful troubleshooting details.</h2>
+            <p>Keep a note of what you expected, what happened instead, and how to reproduce it. Useful details include:</p>
+            <ul><li>Your Kasten version, Chrome version, and operating system. Find the extension version in Chrome’s extension manager under Kasten → Details.</li><li>Whether you are using Mainnet or Testnet-10, and the popup or expanded wallet view.</li><li>The exact error message and a screenshot with sensitive information removed.</li><li>A public transaction ID, if available. Sharing it can link your identity to blockchain activity.</li></ul>
+            <p>Keep wallet secrets, backup files, unrelated account details, and unredacted logs out of reports. We do not need remote access to your device.</p>
           </section>
           <section id="answers">
             <h2 class="faq-heading">Common questions</h2>
             <div class="faq">
               <details id="password"><summary>I forgot my wallet password. What can I do?</summary><div><p>There is no password-reset service. If you have your recovery phrase, restore it into a new wallet inside Kasten and choose a new password. Keep the existing encrypted wallet until you have checked that the restored addresses and accounts are correct.</p><p>If you have lost both the password and recovery phrase, GHOSTDAGGER cannot restore access. Do not send either secret to support or enter it on this website.</p></div></details>
-              <details id="missing-balance"><summary>My balance or older transactions are missing.</summary><div><p>Check that you selected the correct wallet, account, and network. Mainnet and Testnet-10 are separate networks, and Testnet funds are not Mainnet KAS. Allow the node connection and account scan to finish.</p><p>For older transactions, open Activity and choose “Discover older history.” Review its privacy disclosure before confirming: the explorer service will receive derived public addresses. If the balance still looks wrong, contact support before deleting or reinstalling anything.</p></div></details>
-              <details id="connection"><summary>Kasten is offline or cannot connect.</summary><div><p>Check your internet connection. In Kasten, open Settings → Network and use “Retry connection.” A public resolver or node may be temporarily unavailable.</p><p>Close and reopen the popup or expanded view. If it continues, send the exact connection error, selected network, and approximate time to support. Reinstalling is not a first troubleshooting step because it removes local wallet data.</p></div></details>
-              <details id="transfer"><summary>A transfer failed or its outcome is uncertain.</summary><div><p>Check Activity and, if a transaction ID is available, inspect it using the matching network’s explorer. A lost connection does not necessarily mean a broadcast failed.</p><p>Avoid submitting the same payment again until you have checked its status and balance. If the result remains uncertain, contact support with the error and public transaction ID if available. Confirmed transfers cannot be reversed by GHOSTDAGGER.</p></div></details>
+              <details id="missing-balance"><summary>My balance or older transactions are missing.</summary><div><p>Check that you selected the correct wallet, account, and network. Mainnet and Testnet-10 are separate networks, and Testnet funds are not Mainnet KAS. Allow the node connection and account scan to finish.</p><p>For older transactions, open Activity and choose “Discover older history.” Review its privacy disclosure before confirming: the explorer service will receive derived public addresses. If the balance still looks wrong, preserve the existing wallet and your recovery phrase backup. Avoid deleting or reinstalling anything while the issue is unresolved.</p></div></details>
+              <details id="connection"><summary>Kasten is offline or cannot connect.</summary><div><p>Check your internet connection. In Kasten, open Settings → Network and use “Retry connection.” A public resolver or node may be temporarily unavailable.</p><p>Close and reopen the popup or expanded view. If it continues, record the exact connection error, selected network, and approximate time for troubleshooting. Reinstalling is not a first troubleshooting step because it removes local wallet data.</p></div></details>
+              <details id="transfer"><summary>A transfer failed or its outcome is uncertain.</summary><div><p>Check Activity and, if a transaction ID is available, inspect it using the matching network’s explorer. A lost connection does not necessarily mean a broadcast failed.</p><p>Avoid submitting the same payment again until you have checked its status and balance. If the result remains uncertain, keep a record of the error and public transaction ID if available. Do not resend until you have established the outcome. Confirmed transfers cannot be reversed by GHOSTDAGGER.</p></div></details>
               <details id="restore"><summary>Which recovery phrases and assets are supported?</summary><div><p>The current Chrome extension supports native KAS on Mainnet and Testnet-10 and restoration of supported 12- or 24-word English recovery phrases. BIP39 passphrases, sometimes called an extra or “25th” word, are not supported in this version.</p><p>Kasten does not currently provide swaps, token or NFT support, or Ethereum compatibility. Wallet derivation and account discovery can differ between applications; check the restored addresses before relying on a restored wallet.</p></div></details>
               <details id="disconnect"><summary>How do I disconnect a website?</summary><div><p>Open Sites in Kasten and revoke the website’s connection, or disconnect all sites. Connecting allows a site to see your authorized public account information and request transfers; each transfer still requires a separate approval.</p><p>Disconnecting prevents future authorized access. It cannot undo a completed transfer or erase information the site already received.</p></div></details>
               <details id="locking"><summary>Why does the wallet lock when I return?</summary><div><p>Kasten locks after the configured browser-idle interval, when the operating system locks, or when its wallet runtime ends. Choose a five-, fifteen-, or sixty-minute idle interval in Settings → Auto-lock.</p><p>A browser restart or extension update can require unlocking again. Never send your wallet password to support to diagnose a locking issue.</p></div></details>
@@ -60,13 +59,13 @@
             </div>
           </section>
           <section id="security">
-            <h2>Report a security concern.</h2>
-            <p>Email <a href="mailto:support@ghostdagger.dev?subject=Kasten%20security%20report">support@ghostdagger.dev</a> with the subject “Kasten security report.” Describe the affected version, what you observed, and reproduction steps using a disposable wallet if possible.</p>
+            <h2>Security concerns.</h2>
+            <p>Direct contact is temporarily unavailable on this website. If you already have a support conversation with GHOSTDAGGER, you can reply to that thread. Useful details include the affected version, what you observed, and reproduction steps using a disposable wallet.</p>
             <p>For a suspected vulnerability, avoid posting exploitation details publicly before we have had a chance to investigate. Never include real recovery phrases, private keys, passwords, or funds. If you suspect a connected website is malicious, reject its requests and revoke its connection in Sites.</p>
           </section>
           <section id="privacy">
             <h2>Questions about your information?</h2>
-            <p>Read the <a href="/privacy">privacy policy</a> for local storage, network services, website hosting, and support-email handling. Email <a href="mailto:support@ghostdagger.dev?subject=Kasten%20privacy%20request">support@ghostdagger.dev</a> to ask about information GHOSTDAGGER holds or request access, correction, or deletion.</p>
+            <p>Read the <a href="/privacy">privacy policy</a> for local storage, network services, website hosting, and support correspondence. To ask about information in an existing support conversation or request access, correction, or deletion, reply to that thread. Direct contact for new requests is temporarily unavailable on this website.</p>
             <p>We cannot remove records from the Kaspa blockchain or delete information independently held by third-party websites and services.</p>
           </section>
         </div>

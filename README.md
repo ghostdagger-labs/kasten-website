@@ -1,12 +1,12 @@
 # Kasten public website
 
-Standalone static pages for `getkasten.com`, published by **GHOSTDAGGER**, with **support@ghostdagger.dev** as the contact. This repository owns the informational website. The wallet application is maintained separately in [ghostdagger-labs/kaspa-wallet](https://github.com/ghostdagger-labs/kaspa-wallet).
+Standalone static pages for `getkasten.com`, published by **GHOSTDAGGER**. This repository owns the informational website. The wallet application is maintained separately in [ghostdagger-labs/kaspa-wallet](https://github.com/ghostdagger-labs/kaspa-wallet).
 
 ## Pages and content ownership
 
 - `public/index.html`: small landing page with accurate pre-release availability.
 - `public/privacy.html`: canonical privacy policy for the Chrome extension, this website, and support emails.
-- `public/support.html`: contact information, troubleshooting, and security/privacy reporting guidance.
+- `public/support.html`: troubleshooting, contact availability, and security/privacy guidance.
 - `public/404.html`: missing-page fallback.
 - `public/assets/site.css`: shared responsive styles. No client JavaScript, remote fonts, analytics, forms, or application cookies.
 
@@ -40,7 +40,7 @@ Import [ghostdagger-labs/kasten-website](https://github.com/ghostdagger-labs/kas
 
 The project-level Root Directory belongs in Vercel settings, not `vercel.json`. This repository is the complete static site and does not require the wallet repository. No deployment or domain configuration is performed by preparing these files.
 
-`vercel.json` supplies clean URLs, redirects trailing slashes, disables script execution and network calls from the pages, and adds standard security headers. The support email links open the visitor's email app; they are not a form or an email-delivery service.
+`vercel.json` supplies clean URLs, redirects trailing slashes, disables script execution and network calls from the pages, and adds standard security headers. The public pages do not expose a support email address or mailto link. Direct contact is temporarily unavailable; a contact form is deferred. No form, email integration, or new data collection has been added.
 
 After deployment, connect `getkasten.com` using Vercel's actual DNS instructions and verify both routes are publicly accessible without Vercel Authentication. The canonical URLs and sitemap assume the apex domain. If choosing `www.getkasten.com` instead, update those URLs and configure the apex redirect consistently.
 
@@ -52,6 +52,10 @@ Use these Chrome Web Store URLs **after the site is deployed and reachable**:
 - Privacy policy: `https://getkasten.com/privacy`
 - Support: `https://getkasten.com/support`
 
-Before launch, confirm that `support@ghostdagger.dev` can receive email and that its handling/retention matches the policy. This task does not provision or test the mailbox. The policy date is November 25, 2026; update it if practices change before publication. The wallet’s [security and release checklist](https://github.com/ghostdagger-labs/kaspa-wallet/blob/main/docs/extension/release-checklist.md) still applies independently of this website.
+Before launch, restore a working contact route and confirm that message delivery and handling/retention match the policy. Keep the destination mailbox in server-side configuration when adding the form. Do not put it into public HTML, JavaScript, or a form action. The policy date is November 25, 2026; update it if practices change before publication. The wallet’s [security and release checklist](https://github.com/ghostdagger-labs/kaspa-wallet/blob/main/docs/extension/release-checklist.md) still applies independently of this website.
 
 At public extension launch, replace the home page's development notice with the verified Chrome Web Store installation URL. Do not add analytics, a contact form, or another data service without updating the privacy disclosure.
+
+## Chrome Web Store promotional assets
+
+The [promo tile folder](marketing/chrome-web-store/README.md) contains upload-ready 440 × 280 and 1400 × 560 PNGs, original artwork, and generation notes. These assets are kept outside the deployed `public/` directory.
