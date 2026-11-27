@@ -28,7 +28,8 @@ html{background:#0A0E0D}
 body{margin:0;background:#0A0E0D;color:#E9F0EE;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 *{box-sizing:border-box}
 a{color:#3EE0BD;text-decoration:none}
-a:hover{color:#E9F0EE}
+/* Explicit link/button colors retain the prototype's inline-style precedence. */
+a:where(:hover){color:#E9F0EE}
 details summary::-webkit-details-marker{display:none}
 details summary{list-style:none}
 @keyframes lpDrift{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-4%,3%,0) scale(1.07)}}
@@ -289,6 +290,11 @@ main:focus { outline: none; }
   .wallet-scaler { transform: scale(tan(atan2(100cqw, 360px))); }
 }
 
+/* The security grid needs 952px for two columns, including its gap and gutters. */
+@media (max-width: 951px) {
+  .security-intro { position: static; }
+}
+
 @media (max-width: 899px) {
   .desktop-nav, .header-support { display: none; }
   .header-inner { padding-right: 88px; gap: 16px; }
@@ -299,7 +305,6 @@ main:focus { outline: none; }
   .mobile-menu nav { position: absolute; right: 0; top: 55px; width: 240px; padding: 8px; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; background: #111716; box-shadow: 0 20px 50px #0008; }
   .mobile-menu nav a { display: flex; align-items: center; min-height: 44px; padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: #E9F0EE; }
   .mobile-menu nav a:hover { background: #1D2624; color: #3EE0BD; }
-  .security-intro { position: static; }
 }
 
 @media (max-width: 767px) {
