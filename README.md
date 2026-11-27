@@ -4,7 +4,7 @@ Standalone static pages for `getkasten.com`, published by **GHOSTDAGGER**. This 
 
 ## Pages and content ownership
 
-- `public/index.html`: landing page matching the supplied design, with fixed wallet illustrations and responsive mobile layouts. Download destinations and the email notification controls are visual placeholders for this pass.
+- `public/index.html`: landing page matching the supplied design, with fixed wallet illustrations and responsive mobile layouts. Download destinations are visual placeholders for this pass.
 - `public/privacy.html`: canonical privacy policy for the Chrome extension, this website, and support emails.
 - `public/support.html`: troubleshooting, contact availability, and security/privacy guidance.
 - `public/404.html`: missing-page fallback.
@@ -17,7 +17,7 @@ The logo comes from the wallet repository’s [Kasten brand assets](https://gith
 
 The homepage reproduces `docs/design/Kasten Landing.dc.html` and the dark `home` and `seedRevealed` states from `KastenPopup.dc.html` as ordinary HTML, CSS, and inline SVG. The design documents and their preview runtime are reference material only and are not deployed. The homepage's `landing-*.woff2` files are the Latin subsets of Inter, Inter Tight, and JetBrains Mono from Google Fonts; their OFL licenses are included alongside the fonts. Inline icons match Lucide 0.470.0, with its license in `public/assets/lucide-LICENSE.txt`. No build or design-runtime dependency is required.
 
-The mobile menu and FAQ use native disclosure elements. Wallet illustrations are noninteractive and excluded from the tab order. The email field has no form or submission handler, and “Notify me” is a plain button without an action. Existing privacy, support, and publisher links are connected; other placeholder destinations remain deferred.
+The mobile menu and FAQ use native disclosure elements. Wallet illustrations are noninteractive and excluded from the tab order. Section links scroll smoothly unless the visitor prefers reduced motion. There are no email signup controls. Existing privacy, support, and publisher links are connected; other placeholder destinations remain deferred.
 
 ## Local preview
 
