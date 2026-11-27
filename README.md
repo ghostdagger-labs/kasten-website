@@ -4,15 +4,20 @@ Standalone static pages for `getkasten.com`, published by **GHOSTDAGGER**. This 
 
 ## Pages and content ownership
 
-- `public/index.html`: small landing page with accurate pre-release availability.
+- `public/index.html`: landing page matching the supplied design, with fixed wallet illustrations and responsive mobile layouts. Download destinations and the email notification controls are visual placeholders for this pass.
 - `public/privacy.html`: canonical privacy policy for the Chrome extension, this website, and support emails.
 - `public/support.html`: troubleshooting, contact availability, and security/privacy guidance.
 - `public/404.html`: missing-page fallback.
-- `public/assets/site.css`: shared responsive styles. No client JavaScript, remote fonts, analytics, forms, or application cookies.
+- `public/assets/landing.css`: isolated homepage styles, including the static wallet illustrations, mobile navigation, and reduced-motion behavior.
+- `public/assets/site.css`: shared responsive styles for the privacy, support, and 404 pages. The site has no client JavaScript, remote fonts, analytics, form submission, or application cookies.
 
 Edit the HTML directly. The store documentation links to these sources rather than maintaining a second policy. If wallet data flows, service providers, or support practices change, review and update the policy date and Chrome Web Store disclosures together.
 
 The logo comes from the wallet repository’s [Kasten brand assets](https://github.com/ghostdagger-labs/kaspa-wallet/blob/main/packages/brand/assets/kasten-dark.svg). The self-hosted Inter font was copied from `@fontsource-variable/inter`; its license is included in `public/assets/inter-LICENSE.txt`. All assets needed to serve this site are included here.
+
+The homepage reproduces `docs/design/Kasten Landing.dc.html` and the dark `home` and `seedRevealed` states from `KastenPopup.dc.html` as ordinary HTML, CSS, and inline SVG. The design documents and their preview runtime are reference material only and are not deployed. The homepage's `landing-*.woff2` files are the Latin subsets of Inter, Inter Tight, and JetBrains Mono from Google Fonts; their OFL licenses are included alongside the fonts. Inline icons match Lucide 0.470.0, with its license in `public/assets/lucide-LICENSE.txt`. No build or design-runtime dependency is required.
+
+The mobile menu and FAQ use native disclosure elements. Wallet illustrations are noninteractive and excluded from the tab order. The email field has no form or submission handler, and “Notify me” is a plain button without an action. Existing privacy, support, and publisher links are connected; other placeholder destinations remain deferred.
 
 ## Local preview
 

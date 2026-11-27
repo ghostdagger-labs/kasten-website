@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+.kp{--bg:#0D1211;--s1:#111716;--s2:#161D1B;--s3:#1D2624;--line:rgba(255,255,255,.075);--line2:rgba(255,255,255,.13);--tx:#E9F0EE;--mu:#94A29E;--fa:#65726F;--ac:#3EE0BD;--onac:#04150F;--acs:rgba(62,224,189,.13);--acl:rgba(62,224,189,.24);--acd:#0F2420;--warn:#F5C97B;--warns:rgba(245,201,123,.1);--err:#FF8A7A;--errs:rgba(255,138,122,.11);--glass:rgba(255,255,255,.04)}
+.kp.lt{--bg:#FAFCFB;--s1:#FFFFFF;--s2:#F2F6F4;--s3:#E7EEEB;--line:rgba(8,32,26,.09);--line2:rgba(8,32,26,.16);--tx:#0C1A17;--mu:#5C6B67;--fa:#84918D;--ac:#0FB894;--onac:#FFFFFF;--acs:rgba(15,184,148,.1);--acl:rgba(15,184,148,.26);--acd:#EAF6F2;--warn:#9A6B18;--warns:rgba(154,107,24,.09);--err:#C0392B;--errs:rgba(192,57,43,.08);--glass:rgba(8,32,26,.03)}
+.kp input::placeholder{color:var(--fa)}
+.kp input:focus{outline:none}
+.kp button{cursor:pointer;border:none;background:none;font:inherit;color:inherit;padding:0}
+.kp ::-webkit-scrollbar{width:0}
+@keyframes kpIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes kpPulse{0%,100%{box-shadow:0 0 0 0 var(--acl)}50%{box-shadow:0 0 0 4px transparent}}
+</style>
+</helmet>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<linearGradient id="kpInk" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#123F38"></stop><stop offset="1" stop-color="#06201B"></stop></linearGradient>
+<linearGradient id="kpFace" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#FBFDFC"></stop><stop offset="1" stop-color="#D5E3DD"></stop></linearGradient>
+<linearGradient id="kpPanel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E4EDE9"></stop><stop offset="1" stop-color="#F6FAF8"></stop></linearGradient>
+<linearGradient id="kpPlate" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#3EE0BD"></stop><stop offset="1" stop-color="#0FB894"></stop></linearGradient>
+<linearGradient id="kpInkFace" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#164A41"></stop><stop offset="1" stop-color="#051C18"></stop></linearGradient>
+<symbol id="kpIcoD" viewBox="0 0 1024 1024">
+<rect width="1024" height="1024" fill="url(#kpInkFace)"></rect>
+<rect x="150" y="150" width="724" height="724" rx="120" fill="none" stroke="#FFFFFF" stroke-opacity=".16" stroke-width="16"></rect>
+<rect x="84" y="296" width="52" height="140" rx="22" fill="#E3ECE8"></rect><rect x="84" y="588" width="52" height="140" rx="22" fill="#E3ECE8"></rect>
+<rect x="392" y="350" width="240" height="320" rx="58" fill="url(#kpPlate)"></rect>
+<circle cx="512" cy="470" r="42" fill="#06201B"></circle><rect x="491" y="488" width="42" height="104" rx="21" fill="#06201B"></rect>
+</symbol>
+<symbol id="kpIcoL" viewBox="0 0 1024 1024">
+<rect width="1024" height="1024" fill="url(#kpFace)"></rect>
+<rect x="150" y="150" width="724" height="724" rx="120" fill="url(#kpPanel)" stroke="#0B2A25" stroke-opacity=".16" stroke-width="16"></rect>
+<rect x="84" y="296" width="52" height="140" rx="22" fill="url(#kpInk)"></rect><rect x="84" y="588" width="52" height="140" rx="22" fill="url(#kpInk)"></rect>
+<rect x="392" y="350" width="240" height="320" rx="58" fill="url(#kpPlate)"></rect>
+<circle cx="512" cy="470" r="42" fill="#06201B"></circle><rect x="491" y="488" width="42" height="104" rx="21" fill="#06201B"></rect>
+</symbol>
+</defs>
+</svg>
+
+<div class="{{ rootClass }}" style="width:360px;height:600px;background:var(--bg);color:var(--tx);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;overflow:hidden;position:relative">
+
+<sc-if value="{{ showAppHeader }}" hint-placeholder-val="{{ true }}">
+<div style="height:54px;flex:none;display:flex;align-items:center;gap:9px;padding:0 12px;border-bottom:1px solid var(--line);background:var(--s1)">
+<span style="width:26px;height:26px;border-radius:7px;overflow:hidden;flex:none;display:block"><svg width="26" height="26" viewBox="0 0 26 26" style="display:block"><use href="{{ icoHref }}" width="26" height="26"></use></svg></span>
+<button onClick="{{ toggleSwitcher }}" style="display:flex;align-items:center;gap:7px;padding:4px 8px 4px 9px;border-radius:9px;border:1px solid var(--line);background:var(--s2)">
+<span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.15">
+<span style="font-size:12.5px;font-weight:600">Everyday</span>
+<span style="font-size:10px;color:var(--fa)">Account 1</span>
+</span>
+<span style="color:var(--fa);display:grid;place-items:center">{{ ico.chevD }}</span>
+</button>
+<span style="flex:1"></span>
+<button onClick="{{ goSites }}" title="Connected to this site" style="display:flex;align-items:center;gap:6px;padding:5px 8px;border-radius:999px;border:1px solid var(--line);background:var(--glass)">
+<span style="width:6px;height:6px;border-radius:50%;background:var(--ac);display:block;animation:kpPulse 2.6s ease-in-out infinite"></span>
+<span style="font-size:10.5px;font-weight:600;color:var(--mu)">kasswap</span>
+</button>
+<button title="Open Kasten in a tab" style="width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--mu)">{{ ico.expand }}</button>
+<button onClick="{{ goUnlock }}" title="Lock" style="width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--mu)">{{ ico.lock }}</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ showReqHeader }}" hint-placeholder-val="{{ false }}">
+<div style="height:46px;flex:none;display:flex;align-items:center;gap:9px;padding:0 14px;border-bottom:1px solid var(--line);background:var(--s1)">
+<span style="width:20px;height:20px;border-radius:6px;overflow:hidden;flex:none;display:block"><svg width="20" height="20" viewBox="0 0 20 20" style="display:block"><use href="{{ icoHref }}" width="20" height="20"></use></svg></span>
+<span style="font:600 13px/1 'Inter Tight',sans-serif;letter-spacing:-.02em"><span style="color:var(--ac)">Kas</span>ten</span>
+<span style="flex:1"></span>
+<span style="display:flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;border:1px solid var(--line)">
+<span style="width:6px;height:6px;border-radius:50%;background:var(--ac)"></span>
+<span style="font-size:10.5px;font-weight:600">Mainnet</span>
+</span>
+</div>
+</sc-if>
+
+<div style="flex:1;min-height:0;overflow:auto;position:relative">
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div style="padding:16px 14px 14px;display:flex;flex-direction:column;gap:12px;animation:kpIn .25s ease both">
+<div style="position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line);background:var(--acd);padding:18px 16px 16px">
+<div style="position:absolute;width:260px;height:260px;right:-110px;top:-150px;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, var(--acl), transparent 70%);pointer-events:none"></div>
+<div style="position:relative">
+<div style="display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;color:var(--mu)">Total balance <button onClick="{{ toggleHide }}" style="color:var(--fa);display:grid;place-items:center">{{ ico.eye }}</button></div>
+<div style="display:flex;align-items:baseline;gap:6px;margin:8px 0 4px">
+<span style="font:600 38px/1 'Inter Tight',sans-serif;letter-spacing:-.045em;font-variant-numeric:tabular-nums">{{ balInt }}</span>
+<span style="font:500 19px/1 'Inter Tight',sans-serif;color:var(--mu);font-variant-numeric:tabular-nums">{{ balDec }}</span>
+<span style="font:700 12px/1 'Inter Tight',sans-serif;color:var(--ac);margin-left:2px">KAS</span>
+</div>
+<div style="font-size:11.5px;color:var(--mu)">{{ balUsd }} · <span style="color:var(--ac);font-weight:600">+4.2%</span> 7d</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px">
+<button onClick="{{ goSend }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:11px 6px;border-radius:12px;background:var(--ac);color:var(--onac)"><span style="display:grid;place-items:center">{{ ico.up }}</span><span style="font-size:11.5px;font-weight:700">Send</span></button>
+<button onClick="{{ goReceive }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:11px 6px;border-radius:12px;background:var(--s2);border:1px solid var(--line)"><span style="display:grid;place-items:center">{{ ico.down }}</span><span style="font-size:11.5px;font-weight:600">Receive</span></button>
+<button onClick="{{ copy }}" style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:11px 6px;border-radius:12px;background:var(--s2);border:1px solid var(--line);color:{{ copyFg }}"><span style="display:grid;place-items:center">{{ copyIcon }}</span><span style="font-size:11.5px;font-weight:600">{{ copyLabel }}</span></button>
+</div>
+<div style="display:flex;align-items:center;gap:10px;padding:10px 11px;border-radius:12px;border:1px solid var(--line);background:var(--s1)">
+<span style="width:30px;height:30px;border-radius:9px;background:#7B61FF;color:#FFFFFF;display:grid;place-items:center;font:700 13px/1 'Inter Tight',sans-serif;flex:none">K</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font-size:12px;font-weight:600">app.kasswap.example</span>
+<span style="display:flex;align-items:center;gap:5px;font-size:10.5px;color:var(--ac);margin-top:2px"><span style="width:5px;height:5px;border-radius:50%;background:var(--ac)"></span>Connected · this tab</span>
+</span>
+<button onClick="{{ goSites }}" style="font-size:11px;font-weight:600;color:var(--mu);padding:5px 8px;border-radius:7px;border:1px solid var(--line);background:var(--s2)">Manage</button>
+</div>
+<div>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:2px 2px 6px">
+<span style="font-size:12px;font-weight:600">Recent</span>
+<button onClick="{{ goActivity }}" style="font-size:11px;font-weight:600;color:var(--ac)">View all</button>
+</div>
+<sc-for list="{{ recent }}" as="t" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:10px;padding:8px 2px">
+<span style="width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:none;background:{{ t.ibg }};color:{{ t.c }}">{{ t.icon }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.title }}</span>
+<span style="display:block;font-size:10.5px;color:var(--fa);margin-top:2px">{{ t.time }}</span>
+</span>
+<span style="font:600 12px/1 'JetBrains Mono',monospace;color:{{ t.c }}">{{ t.amount }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSend }}" hint-placeholder-val="{{ false }}">
+<div style="padding:14px;display:flex;flex-direction:column;gap:12px;animation:kpIn .25s ease both">
+<div style="display:flex;align-items:center;gap:8px">
+<button onClick="{{ goHome }}" style="width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--mu);background:var(--s2)">{{ ico.left }}</button>
+<span style="font:600 17px/1 'Inter Tight',sans-serif;letter-spacing:-.02em">Send KAS</span>
+<span style="flex:1"></span>
+<span style="font:600 10px/1 'JetBrains Mono',monospace;color:var(--fa)">1 / 2</span>
+</div>
+<div>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><span style="font-size:11.5px;font-weight:600">To</span><button style="display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:600;color:var(--mu)">{{ ico.book }}Contacts</button></div>
+<div style="display:flex;align-items:center;gap:8px;padding:10px 11px;border-radius:10px;border:1px solid var(--line2);background:var(--s2)">
+<span style="color:var(--ac);display:grid;place-items:center">{{ ico.check }}</span>
+<span style="flex:1;min-width:0;font:500 11px/1.45 'JetBrains Mono',monospace;word-break:break-all">kaspa:qypn8f4l2xj7v0v9d3m6a2c8r4tz5h7k9w3q1s6y8u2</span>
+</div>
+<div style="font-size:10.5px;color:var(--ac);margin-top:6px">Exchange deposit · sent 4 times</div>
+</div>
+<div>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><span style="font-size:11.5px;font-weight:600">Amount</span><span style="font-size:10.5px;color:var(--fa)">Available <span style="font-family:'JetBrains Mono',monospace;color:var(--mu)">18,204.61</span></span></div>
+<div style="display:flex;align-items:center;gap:8px;padding:11px 11px 11px 13px;border-radius:10px;border:1px solid var(--acl);background:var(--s2);box-shadow:0 0 0 3px var(--acs)">
+<span style="flex:1;font:600 24px/1 'Inter Tight',sans-serif;letter-spacing:-.03em;font-variant-numeric:tabular-nums">1,250.00</span>
+<span style="font:700 11px/1 'Inter Tight',sans-serif;color:var(--mu)">KAS</span>
+<button style="padding:5px 8px;border-radius:7px;background:var(--acs);color:var(--ac);font-size:10.5px;font-weight:700">MAX</button>
+</div>
+<div style="font-size:10.5px;color:var(--fa);margin-top:6px">≈ $87.34 USD</div>
+</div>
+<div>
+<div style="font-size:11.5px;font-weight:600;margin-bottom:6px">Priority</div>
+<div style="display:flex;padding:3px;border-radius:10px;background:var(--s2);border:1px solid var(--line);gap:3px">
+<sc-for list="{{ fees }}" as="f" hint-placeholder-count="3">
+<button onClick="{{ f.go }}" style="flex:1;padding:7px 4px;border-radius:7px;font-size:11px;font-weight:600;background:{{ f.bg }};color:{{ f.fg }};box-shadow:{{ f.ring }}">{{ f.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="border-radius:10px;border:1px solid var(--line);padding:4px 11px">
+<div style="display:flex;justify-content:space-between;padding:7px 0;font-size:11.5px"><span style="color:var(--mu)">Network fee</span><span style="font-family:'JetBrains Mono',monospace">0.0000216</span></div>
+<div style="display:flex;justify-content:space-between;padding:7px 0;font-size:11.5px;border-top:1px solid var(--line)"><span style="font-weight:600">Total</span><span style="font-family:'JetBrains Mono',monospace;font-weight:600">1,250.0000216 KAS</span></div>
+</div>
+<button onClick="{{ goConfirm }}" style="display:flex;align-items:center;justify-content:center;gap:7px;padding:12px;border-radius:11px;background:var(--ac);color:var(--onac);font-size:13px;font-weight:700">Review {{ ico.right }}</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isConfirm }}" hint-placeholder-val="{{ false }}">
+<div style="padding:14px;display:flex;flex-direction:column;gap:12px;animation:kpIn .25s ease both">
+<div style="display:flex;align-items:center;gap:8px">
+<button onClick="{{ goSend }}" style="width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--mu);background:var(--s2)">{{ ico.left }}</button>
+<span style="font:600 17px/1 'Inter Tight',sans-serif;letter-spacing:-.02em">Confirm and sign</span>
+<span style="flex:1"></span>
+<span style="font:600 10px/1 'JetBrains Mono',monospace;color:var(--fa)">2 / 2</span>
+</div>
+<div style="border-radius:13px;border:1px solid var(--line);background:var(--acd);padding:16px;text-align:center">
+<div style="font-size:11px;color:var(--mu);margin-bottom:6px">You are sending</div>
+<div style="font:600 30px/1 'Inter Tight',sans-serif;letter-spacing:-.04em">1,250.00 <span style="font-size:14px;color:var(--ac)">KAS</span></div>
+<div style="font-size:11px;color:var(--mu);margin-top:6px">≈ $87.34 USD</div>
+</div>
+<div style="border-radius:10px;border:1px solid var(--line);padding:2px 11px">
+<sc-for list="{{ confirmRows }}" as="r" hint-placeholder-count="3">
+<div style="display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:11.5px"><span style="color:var(--mu);flex:none">{{ r.k }}</span><span style="font:500 11px/1.45 'JetBrains Mono',monospace;text-align:right;word-break:break-all">{{ r.v }}</span></div>
+</sc-for>
+</div>
+<div>
+<div style="font-size:11.5px;font-weight:600;margin-bottom:6px">Wallet password</div>
+<div style="display:flex;align-items:center;gap:8px;padding:10px 11px;border-radius:10px;border:1px solid {{ pwBd }};background:var(--s2);box-shadow:{{ pwRing }}">
+<span style="color:var(--mu);display:grid;place-items:center">{{ ico.key }}</span>
+<input type="password" value="{{ pw }}" onChange="{{ onPw }}" placeholder="Type to sign" style="flex:1;min-width:0;border:none;background:none;font-size:12.5px;color:var(--tx)" />
+</div>
+</div>
+<button onClick="{{ goSent }}" style="display:flex;align-items:center;justify-content:center;gap:7px;padding:12px;border-radius:11px;background:{{ signBg }};color:{{ signFg }};font-size:13px;font-weight:700">{{ ico.shield }}Sign and send</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSent }}" hint-placeholder-val="{{ false }}">
+<div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;animation:kpIn .25s ease both">
+<span style="width:60px;height:60px;border-radius:50%;background:var(--acs);color:var(--ac);display:grid;place-items:center;margin-bottom:18px">{{ ico.checkBig }}</span>
+<div style="font:600 20px/1.2 'Inter Tight',sans-serif;letter-spacing:-.025em">Sent 1,250.00 KAS</div>
+<div style="font-size:12px;color:var(--mu);margin-top:8px;line-height:1.55">Accepted by the network.<br />Confirmed in a few seconds.</div>
+<div style="display:flex;gap:8px;margin-top:22px;width:100%">
+<button onClick="{{ goActivity }}" style="flex:1;padding:11px;border-radius:10px;border:1px solid var(--line2);background:var(--s2);font-size:12px;font-weight:600">Activity</button>
+<button onClick="{{ goHome }}" style="flex:1;padding:11px;border-radius:10px;background:var(--ac);color:var(--onac);font-size:12px;font-weight:700">Done</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isReceive }}" hint-placeholder-val="{{ false }}">
+<div style="padding:14px;display:flex;flex-direction:column;gap:12px;animation:kpIn .25s ease both">
+<div style="display:flex;align-items:center;gap:8px">
+<button onClick="{{ goHome }}" style="width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--mu);background:var(--s2)">{{ ico.left }}</button>
+<span style="font:600 17px/1 'Inter Tight',sans-serif;letter-spacing:-.02em">Receive KAS</span>
+</div>
+<div style="align-self:center;width:200px;height:200px;border-radius:14px;background:#FFFFFF;padding:14px;display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(7,1fr);gap:3px;box-shadow:0 0 0 1px var(--line)">
+<span style="grid-area:1/1/3/3;border:4px solid #05100D;border-radius:3px"></span><span style="grid-area:1/6/3/8;border:4px solid #05100D;border-radius:3px"></span><span style="grid-area:6/1/8/3;border:4px solid #05100D;border-radius:3px"></span>
+<span style="grid-area:1/4/2/5;background:#05100D;border-radius:2px"></span><span style="grid-area:2/5/3/6;background:#05100D;border-radius:2px"></span><span style="grid-area:3/2/4/3;background:#05100D;border-radius:2px"></span><span style="grid-area:3/4/4/6;background:#05100D;border-radius:2px"></span><span style="grid-area:4/1/5/2;background:#05100D;border-radius:2px"></span><span style="grid-area:4/6/5/8;background:#05100D;border-radius:2px"></span><span style="grid-area:5/2/6/4;background:#05100D;border-radius:2px"></span><span style="grid-area:6/4/7/5;background:#05100D;border-radius:2px"></span><span style="grid-area:6/6/7/7;background:#05100D;border-radius:2px"></span><span style="grid-area:7/5/8/6;background:#05100D;border-radius:2px"></span><span style="grid-area:7/7/8/8;background:#05100D;border-radius:2px"></span>
+<span style="grid-area:4/4/5/5;border-radius:4px;overflow:hidden;display:block"><svg width="100%" height="100%" viewBox="0 0 1024 1024" style="display:block"><use href="#kpIcoD"></use></svg></span>
+</div>
+<div style="display:flex;align-items:center;justify-content:center;gap:6px;font-size:10.5px;font-weight:700;color:var(--ac)">{{ ico.check }}Unused address · Account 1</div>
+<div style="font:500 11.5px/1.6 'JetBrains Mono',monospace;word-break:break-all;padding:10px 11px;border-radius:10px;background:var(--s2);border:1px solid var(--line);text-align:center">kaspa:qzvkua3ersg8lr4lauuqwzat98a0mfjludp44prqvaw2q60vsrc5653gxwdxg</div>
+<div style="display:flex;gap:8px">
+<button onClick="{{ copy }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px;border-radius:10px;background:var(--ac);color:var(--onac);font-size:12.5px;font-weight:700">{{ copyIconOn }}{{ copyLabel }}</button>
+<button style="display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 13px;border-radius:10px;border:1px solid var(--line2);background:var(--s2);font-size:12.5px;font-weight:600">{{ ico.refresh }}New</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isActivity }}" hint-placeholder-val="{{ false }}">
+<div style="padding:14px 0 8px;animation:kpIn .25s ease both">
+<div style="padding:0 14px 10px;display:flex;align-items:center;justify-content:space-between">
+<span style="font:600 17px/1 'Inter Tight',sans-serif;letter-spacing:-.02em">Activity</span>
+<button style="width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--mu);background:var(--s2)">{{ ico.search }}</button>
+</div>
+<div style="display:flex;gap:6px;padding:0 14px 8px">
+<sc-for list="{{ filters }}" as="f" hint-placeholder-count="3">
+<button onClick="{{ f.go }}" style="padding:5px 10px;border-radius:999px;font-size:11px;font-weight:600;border:1px solid var(--line);background:{{ f.bg }};color:{{ f.fg }}">{{ f.label }}</button>
+</sc-for>
+</div>
+<sc-for list="{{ txs }}" as="t" hint-placeholder-count="7">
+<div>
+<sc-if value="{{ t.head }}" hint-placeholder-val="{{ false }}">
+<div style="padding:10px 14px 4px;font:700 9px/1 'Inter',sans-serif;letter-spacing:.14em;color:var(--fa)">{{ t.head }}</div>
+</sc-if>
+<div style="display:flex;align-items:center;gap:10px;padding:8px 14px">
+<span style="width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:none;background:{{ t.ibg }};color:{{ t.c }}">{{ t.icon }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.title }}</span>
+<span style="display:block;font-size:10.5px;color:var(--fa);margin-top:2px">{{ t.sub }}</span>
+</span>
+<span style="text-align:right;flex:none">
+<span style="display:block;font:600 12px/1 'JetBrains Mono',monospace;color:{{ t.c }}">{{ t.amount }}</span>
+<span style="display:block;font-size:10px;color:var(--fa);margin-top:4px">{{ t.time }}</span>
+</span>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSites }}" hint-placeholder-val="{{ false }}">
+<div style="padding:14px;display:flex;flex-direction:column;gap:10px;animation:kpIn .25s ease both">
+<div>
+<div style="font:600 17px/1 'Inter Tight',sans-serif;letter-spacing:-.02em">Connected sites</div>
+<div style="font-size:11.5px;color:var(--mu);margin-top:6px;line-height:1.5">Sites can see your address and ask you to sign. They can never move funds on their own.</div>
+</div>
+<sc-for list="{{ sites }}" as="s" hint-placeholder-count="3">
+<div style="border-radius:12px;border:1px solid {{ s.bd }};background:{{ s.bg }};padding:11px">
+<div style="display:flex;align-items:center;gap:10px">
+<span style="width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font:700 13px/1 'Inter Tight',sans-serif;flex:none;background:{{ s.tile }};color:#FFFFFF">{{ s.letter }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font-size:12px;font-weight:600">{{ s.host }}</span>
+<span style="display:block;font-size:10.5px;color:{{ s.subC }};margin-top:2px">{{ s.sub }}</span>
+</span>
+<button style="font-size:11px;font-weight:600;color:var(--err);padding:5px 8px;border-radius:7px;background:var(--errs)">Revoke</button>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:9px">
+<sc-for list="{{ s.perms }}" as="p" hint-placeholder-count="2">
+<span style="font-size:10px;font-weight:600;padding:3px 7px;border-radius:999px;background:var(--s3);color:var(--mu)">{{ p }}</span>
+</sc-for>
+</div>
+</div>
+</sc-for>
+<button style="font-size:11.5px;font-weight:600;color:var(--mu);padding:8px">Disconnect all sites</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSettings }}" hint-placeholder-val="{{ false }}">
+<div style="padding:14px;display:flex;flex-direction:column;gap:10px;animation:kpIn .25s ease both">
+<div style="font:600 17px/1 'Inter Tight',sans-serif;letter-spacing:-.02em">Settings</div>
+<div style="border-radius:12px;border:1px solid var(--line);background:var(--s1);overflow:hidden">
+<sc-for list="{{ settingRows }}" as="r" hint-placeholder-count="6">
+<div style="display:flex;align-items:center;gap:10px;padding:11px 12px;border-bottom:1px solid var(--line)">
+<span style="color:var(--fa);display:grid;place-items:center">{{ r.icon }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font-size:12px;font-weight:600">{{ r.k }}</span>
+<span style="display:block;font-size:10.5px;color:var(--fa);margin-top:2px">{{ r.d }}</span>
+</span>
+<span style="font-size:11px;font-weight:600;color:{{ r.vc }}">{{ r.v }}</span>
+</div>
+</sc-for>
+</div>
+<button style="display:flex;align-items:center;justify-content:center;gap:7px;padding:11px;border-radius:10px;border:1px solid var(--line2);background:var(--s2);font-size:12px;font-weight:600">{{ ico.expand }}Open Kasten in a tab</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isConnect }}" hint-placeholder-val="{{ false }}">
+<div style="height:100%;display:flex;flex-direction:column;animation:kpIn .25s ease both">
+<div style="flex:1;padding:18px 16px 12px;display:flex;flex-direction:column;gap:14px">
+<div style="text-align:center">
+<span style="width:52px;height:52px;border-radius:15px;background:#7B61FF;color:#FFFFFF;display:grid;place-items:center;font:700 22px/1 'Inter Tight',sans-serif;margin:0 auto 12px">K</span>
+<div style="font:600 18px/1.2 'Inter Tight',sans-serif;letter-spacing:-.025em">Connect to KasSwap?</div>
+<div style="display:inline-flex;align-items:center;gap:6px;margin-top:9px;padding:5px 10px;border-radius:999px;background:var(--s2);border:1px solid var(--line)">
+<span style="color:var(--ac);display:grid;place-items:center">{{ ico.lock12 }}</span>
+<span style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--fa)">https://app.<span style="color:var(--tx);font-weight:600">kasswap.example</span></span>
+</div>
+</div>
+<div style="border-radius:12px;border:1px solid var(--line);background:var(--s1);padding:12px">
+<div style="font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--fa);margin-bottom:9px">THIS SITE WILL BE ABLE TO</div>
+<div style="display:flex;align-items:center;gap:9px;font-size:12px;padding:4px 0"><span style="color:var(--ac);display:grid;place-items:center">{{ ico.check }}</span>See your address and balance</div>
+<div style="display:flex;align-items:center;gap:9px;font-size:12px;padding:4px 0"><span style="color:var(--ac);display:grid;place-items:center">{{ ico.check }}</span>Ask you to approve transactions</div>
+<div style="height:1px;background:var(--line);margin:8px 0"></div>
+<div style="display:flex;align-items:center;gap:9px;font-size:12px;padding:4px 0;color:var(--mu)"><span style="color:var(--fa);display:grid;place-items:center">{{ ico.x }}</span>Move funds without your password</div>
+</div>
+<div>
+<div style="font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--fa);margin-bottom:7px">CONNECT WITH</div>
+<sc-for list="{{ connectAccts }}" as="a" hint-placeholder-count="2">
+<button onClick="{{ a.go }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:9px 11px;border-radius:10px;border:1px solid {{ a.bd }};background:{{ a.bg }};margin-bottom:6px;text-align:left">
+<span style="width:16px;height:16px;border-radius:50%;flex:none;border:1.5px solid {{ a.rb }};display:grid;place-items:center"><span style="width:8px;height:8px;border-radius:50%;background:{{ a.dot }}"></span></span>
+<span style="flex:1;font-size:12px;font-weight:600">{{ a.name }}</span>
+<span style="font:500 11px/1 'JetBrains Mono',monospace;color:var(--fa)">{{ a.bal }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+<div style="flex:none;display:flex;gap:8px;padding:12px 16px 16px;border-top:1px solid var(--line)">
+<button onClick="{{ goHome }}" style="flex:1;padding:12px;border-radius:11px;border:1px solid var(--line2);background:var(--s2);font-size:13px;font-weight:600">Cancel</button>
+<button onClick="{{ goHome }}" style="flex:1;padding:12px;border-radius:11px;background:var(--ac);color:var(--onac);font-size:13px;font-weight:700">Connect</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSign }}" hint-placeholder-val="{{ false }}">
+<div style="height:100%;display:flex;flex-direction:column;animation:kpIn .25s ease both">
+<div style="flex:1;padding:14px 16px 10px;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;align-items:center;gap:9px">
+<span style="width:28px;height:28px;border-radius:8px;background:#7B61FF;color:#FFFFFF;display:grid;place-items:center;font:700 12px/1 'Inter Tight',sans-serif;flex:none">K</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font-size:12px;font-weight:600">Transaction request</span>
+<span style="display:block;font:500 10.5px/1.4 'JetBrains Mono',monospace;color:var(--fa)">app.kasswap.example</span>
+</span>
+<span style="font-size:10px;font-weight:700;padding:4px 8px;border-radius:999px;background:var(--acs);color:var(--ac)">Connected</span>
+</div>
+<div style="border-radius:13px;border:1px solid var(--line);background:var(--acd);padding:15px;text-align:center">
+<div style="font-size:11px;color:var(--mu);margin-bottom:6px">KasSwap asks you to send</div>
+<div style="font:600 30px/1 'Inter Tight',sans-serif;letter-spacing:-.04em">250.00 <span style="font-size:14px;color:var(--ac)">KAS</span></div>
+<div style="font-size:11px;color:var(--mu);margin-top:6px">≈ $17.47 USD · from Account 1</div>
+</div>
+<div style="border-radius:10px;border:1px solid var(--line);padding:2px 11px">
+<sc-for list="{{ signRows }}" as="r" hint-placeholder-count="3">
+<div style="display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:11.5px"><span style="color:var(--mu);flex:none">{{ r.k }}</span><span style="font:500 11px/1.45 'JetBrains Mono',monospace;text-align:right;word-break:break-all">{{ r.v }}</span></div>
+</sc-for>
+</div>
+<div style="display:flex;align-items:flex-start;gap:8px;padding:9px 10px;border-radius:10px;background:var(--warns)">
+<span style="color:var(--warn);display:grid;place-items:center;flex:none;margin-top:1px">{{ ico.warn }}</span>
+<span style="font-size:11px;line-height:1.5;color:var(--mu)">First time sending to this address. Make sure it matches what KasSwap shows.</span>
+</div>
+<div style="display:flex;align-items:center;gap:8px;padding:10px 11px;border-radius:10px;border:1px solid {{ pwBd }};background:var(--s2);box-shadow:{{ pwRing }}">
+<span style="color:var(--mu);display:grid;place-items:center">{{ ico.key }}</span>
+<input type="password" value="{{ pw }}" onChange="{{ onPw }}" placeholder="Wallet password to sign" style="flex:1;min-width:0;border:none;background:none;font-size:12.5px;color:var(--tx)" />
+</div>
+</div>
+<div style="flex:none;display:flex;gap:8px;padding:12px 16px 16px;border-top:1px solid var(--line)">
+<button onClick="{{ goHome }}" style="flex:1;padding:12px;border-radius:11px;border:1px solid var(--line2);background:var(--s2);font-size:13px;font-weight:600">Reject</button>
+<button onClick="{{ goSent }}" style="flex:1.4;display:flex;align-items:center;justify-content:center;gap:7px;padding:12px;border-radius:11px;background:{{ signBg }};color:{{ signFg }};font-size:13px;font-weight:700">{{ ico.shield }}Approve</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isUnlock }}" hint-placeholder-val="{{ false }}">
+<div style="height:100%;display:flex;flex-direction:column;padding:0 22px 20px;position:relative;overflow:hidden;animation:kpIn .25s ease both">
+<div style="position:absolute;width:420px;height:420px;left:-30px;top:-240px;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, var(--acl), transparent 70%);pointer-events:none"></div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;text-align:center">
+<span style="width:76px;height:76px;border-radius:20px;overflow:hidden;display:block;box-shadow:0 18px 40px -16px rgba(0,0,0,.6)"><svg width="76" height="76" viewBox="0 0 76 76" style="display:block"><use href="{{ icoHref }}" width="76" height="76"></use></svg></span>
+<div style="font:600 24px/1 'Inter Tight',sans-serif;letter-spacing:-.035em;margin-top:18px"><span style="color:var(--ac)">Kas</span>ten</div>
+<div style="font-size:12px;color:var(--mu);margin-top:8px">Everyday is locked</div>
+</div>
+<div style="position:relative">
+<div style="display:flex;align-items:center;gap:8px;padding:12px;border-radius:11px;border:1px solid var(--acl);background:var(--s1);box-shadow:0 0 0 3px var(--acs)">
+<span style="color:var(--mu);display:grid;place-items:center">{{ ico.key }}</span>
+<input type="password" value="{{ upw }}" onChange="{{ onUpw }}" placeholder="Password" style="flex:1;min-width:0;border:none;background:none;font-size:13px;color:var(--tx)" />
+</div>
+<button onClick="{{ goHome }}" style="display:flex;align-items:center;justify-content:center;gap:7px;width:100%;margin-top:10px;padding:12px;border-radius:11px;background:var(--ac);color:var(--onac);font-size:13px;font-weight:700">{{ ico.unlock }}Unlock</button>
+<div style="display:flex;justify-content:space-between;margin-top:14px">
+<button onClick="{{ toggleSwitcher }}" style="font-size:11.5px;font-weight:600;color:var(--mu)">Switch wallet</button>
+<button style="font-size:11.5px;font-weight:600;color:var(--mu)">Forgot password?</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isCreate }}" hint-placeholder-val="{{ false }}">
+<div style="height:100%;display:flex;flex-direction:column;animation:kpIn .25s ease both">
+<div style="height:50px;flex:none;display:flex;align-items:center;gap:12px;padding:0 12px;border-bottom:1px solid var(--line);background:var(--s1)">
+<button onClick="{{ createBack }}" style="width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--mu);background:var(--s2)">{{ ico.left }}</button>
+<div style="flex:1;display:flex;gap:4px"><sc-for list="{{ obSegs }}" as="g" hint-placeholder-count="3"><span style="height:3px;flex:1;border-radius:3px;background:{{ g.bg }};display:block"></span></sc-for></div>
+<span style="font:600 10px/1 'JetBrains Mono',monospace;color:var(--fa)">{{ obStep }}</span>
+</div>
+<div style="flex:1;min-height:0;overflow:auto;padding:16px 16px 10px;display:flex;flex-direction:column;gap:13px">
+<div>
+<div style="font:600 20px/1.15 'Inter Tight',sans-serif;letter-spacing:-.03em">{{ createTitle }}</div>
+<div style="font-size:11.5px;color:var(--mu);margin-top:6px;line-height:1.5">{{ createSub }}</div>
+</div>
+<div>
+<div style="font-size:11.5px;font-weight:600;margin-bottom:6px">Nickname</div>
+<div style="display:flex;align-items:center;gap:8px;padding:10px 11px;border-radius:10px;border:1px solid var(--line);background:var(--s2)">
+<span style="color:var(--fa);display:grid;place-items:center">{{ ico.tag }}</span>
+<input defaultValue="Everyday" style="flex:1;min-width:0;border:none;background:none;font-size:12.5px;font-weight:500;color:var(--tx)" />
+</div>
+</div>
+<div>
+<div style="font-size:11.5px;font-weight:600;margin-bottom:6px">Password</div>
+<div style="display:flex;align-items:center;gap:8px;padding:10px 11px;border-radius:10px;border:1px solid var(--acl);background:var(--s2);box-shadow:0 0 0 3px var(--acs)">
+<span style="color:var(--mu);display:grid;place-items:center">{{ ico.key }}</span>
+<input type="password" defaultValue="correcthorsebattery" style="flex:1;min-width:0;border:none;background:none;font-size:12.5px;color:var(--tx)" />
+<span style="color:var(--fa);display:grid;place-items:center">{{ ico.eyeSm }}</span>
+</div>
+<div style="display:flex;align-items:center;gap:8px;margin-top:7px">
+<span style="flex:1;display:flex;gap:3px"><span style="height:3px;flex:1;border-radius:3px;background:var(--ac);display:block"></span><span style="height:3px;flex:1;border-radius:3px;background:var(--ac);display:block"></span><span style="height:3px;flex:1;border-radius:3px;background:var(--ac);display:block"></span><span style="height:3px;flex:1;border-radius:3px;background:var(--line2);display:block"></span></span>
+<span style="font-size:10.5px;font-weight:700;color:var(--ac)">Strong</span>
+</div>
+</div>
+<div>
+<div style="font-size:11.5px;font-weight:600;margin-bottom:6px">Confirm password</div>
+<div style="display:flex;align-items:center;gap:8px;padding:10px 11px;border-radius:10px;border:1px solid var(--line);background:var(--s2)">
+<span style="color:var(--ac);display:grid;place-items:center">{{ ico.check }}</span>
+<input type="password" defaultValue="correcthorsebattery" style="flex:1;min-width:0;border:none;background:none;font-size:12.5px;color:var(--tx)" />
+</div>
+</div>
+<div style="display:flex;align-items:flex-start;gap:8px;padding:9px 10px;border-radius:10px;background:var(--warns)">
+<span style="color:var(--warn);display:grid;place-items:center;flex:none;margin-top:1px">{{ ico.warn }}</span>
+<span style="font-size:11px;line-height:1.5;color:var(--mu)">There is no password reset. Your recovery phrase is the only way back in.</span>
+</div>
+</div>
+<div style="flex:none;padding:12px 16px 16px;border-top:1px solid var(--line)">
+<button onClick="{{ createNext }}" style="display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:12px;border-radius:11px;background:var(--ac);color:var(--onac);font-size:13px;font-weight:700">Continue {{ ico.right }}</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSeed }}" hint-placeholder-val="{{ false }}">
+<div style="height:100%;display:flex;flex-direction:column;animation:kpIn .25s ease both">
+<div style="height:50px;flex:none;display:flex;align-items:center;gap:12px;padding:0 12px;border-bottom:1px solid var(--line);background:var(--s1)">
+<button onClick="{{ seedBack }}" style="width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--mu);background:var(--s2)">{{ ico.left }}</button>
+<div style="flex:1;display:flex;gap:4px"><sc-for list="{{ obSegs }}" as="g" hint-placeholder-count="3"><span style="height:3px;flex:1;border-radius:3px;background:{{ g.bg }};display:block"></span></sc-for></div>
+<span style="font:600 10px/1 'JetBrains Mono',monospace;color:var(--fa)">{{ obStep }}</span>
+</div>
+<div style="flex:1;min-height:0;overflow:auto;padding:16px 16px 10px;display:flex;flex-direction:column;gap:12px">
+<div>
+<div style="font:600 20px/1.15 'Inter Tight',sans-serif;letter-spacing:-.03em">Write down these 12 words</div>
+<div style="font-size:11.5px;color:var(--mu);margin-top:6px;line-height:1.5">On paper, in order. They are the only way to recover this wallet.</div>
+</div>
+<div style="position:relative">
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;filter:{{ seedBlur }}">
+<sc-for list="{{ seed }}" as="w" hint-placeholder-count="12">
+<div style="display:flex;align-items:center;gap:9px;height:32px;padding:0 10px;border-radius:9px;background:var(--s2);border:1px solid var(--line)">
+<span style="font:500 10px/1 'JetBrains Mono',monospace;color:var(--fa);width:14px;text-align:right;flex:none">{{ w.n }}</span>
+<span style="font:600 12.5px/1 'JetBrains Mono',monospace;letter-spacing:-.01em">{{ w.word }}</span>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ seedHidden }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:-4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-radius:12px;background:color-mix(in oklab, var(--bg) 55%, transparent)">
+<span style="font-size:11.5px;color:var(--mu)">Make sure no one can see your screen</span>
+<button onClick="{{ revealSeed }}" style="display:flex;align-items:center;gap:7px;padding:10px 16px;border-radius:10px;background:var(--ac);color:var(--onac);font-size:12.5px;font-weight:700">{{ ico.eyeSm }}Reveal words</button>
+</div>
+</sc-if>
+</div>
+<div style="display:flex;align-items:flex-start;gap:8px;padding:9px 10px;border-radius:10px;background:var(--warns)">
+<span style="color:var(--warn);display:grid;place-items:center;flex:none;margin-top:1px">{{ ico.warn }}</span>
+<span style="font-size:11px;line-height:1.5;color:var(--mu)">Anyone with these words can take your KAS. Copying is turned off on purpose.</span>
+</div>
+</div>
+<div style="flex:none;padding:10px 16px 16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
+<button onClick="{{ toggleAck }}" style="display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:10px;border:1px solid {{ ackBd }};background:{{ ackBg }};text-align:left">
+<span style="width:17px;height:17px;border-radius:5px;display:grid;place-items:center;flex:none;border:1px solid {{ ackBox }};background:{{ ackFill }};color:var(--onac)">{{ ackTick }}</span>
+<span style="font-size:11.5px;font-weight:600">I wrote all 12 words down in order</span>
+</button>
+<button onClick="{{ goVerify }}" style="display:flex;align-items:center;justify-content:center;gap:7px;padding:12px;border-radius:11px;background:{{ ackBtnBg }};color:{{ ackBtnFg }};font-size:13px;font-weight:700">Check my backup {{ ico.right }}</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isVerify }}" hint-placeholder-val="{{ false }}">
+<div style="height:100%;display:flex;flex-direction:column;animation:kpIn .25s ease both">
+<div style="height:50px;flex:none;display:flex;align-items:center;gap:12px;padding:0 12px;border-bottom:1px solid var(--line);background:var(--s1)">
+<button onClick="{{ verifyBack }}" style="width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--mu);background:var(--s2)">{{ ico.left }}</button>
+<div style="flex:1;display:flex;gap:4px"><sc-for list="{{ obSegs }}" as="g" hint-placeholder-count="3"><span style="height:3px;flex:1;border-radius:3px;background:{{ g.bg }};display:block"></span></sc-for></div>
+<span style="font:600 10px/1 'JetBrains Mono',monospace;color:var(--fa)">{{ obStep }}</span>
+</div>
+<div style="flex:1;min-height:0;overflow:auto;padding:16px 16px 10px;display:flex;flex-direction:column;gap:16px">
+<div>
+<div style="font:600 20px/1.15 'Inter Tight',sans-serif;letter-spacing:-.03em">Quick check</div>
+<div style="font-size:11.5px;color:var(--mu);margin-top:6px;line-height:1.5">Tap the right word for each number. No typing.</div>
+</div>
+<sc-for list="{{ verify }}" as="v" hint-placeholder-count="3">
+<div>
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+<span style="width:22px;height:22px;border-radius:7px;display:grid;place-items:center;font:600 10px/1 'JetBrains Mono',monospace;background:{{ v.nbg }};color:{{ v.nfg }}">{{ v.n }}</span>
+<span style="font-size:11.5px;font-weight:600;color:var(--mu)">Word number {{ v.n }}</span>
+<span style="flex:1"></span>
+<span style="font-size:10.5px;font-weight:700;color:{{ v.stateC }}">{{ v.state }}</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px">
+<sc-for list="{{ v.options }}" as="o" hint-placeholder-count="4">
+<button onClick="{{ o.go }}" style="height:34px;border-radius:8px;font:600 11px/1 'JetBrains Mono',monospace;border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.w }}</button>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="flex:none;padding:12px 16px 16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px">
+<button onClick="{{ goDone }}" style="display:flex;align-items:center;justify-content:center;gap:7px;padding:12px;border-radius:11px;background:{{ finBg }};color:{{ finFg }};font-size:13px;font-weight:700">{{ ico.shield }}Finish setup</button>
+<span style="text-align:center;font-size:10.5px;color:var(--fa)">{{ verifyHint }}</span>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isRestore }}" hint-placeholder-val="{{ false }}">
+<div style="height:100%;display:flex;flex-direction:column;animation:kpIn .25s ease both">
+<div style="height:50px;flex:none;display:flex;align-items:center;gap:12px;padding:0 12px;border-bottom:1px solid var(--line);background:var(--s1)">
+<button onClick="{{ goWelcome }}" style="width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--mu);background:var(--s2)">{{ ico.left }}</button>
+<div style="flex:1;display:flex;gap:4px"><sc-for list="{{ obSegs }}" as="g" hint-placeholder-count="2"><span style="height:3px;flex:1;border-radius:3px;background:{{ g.bg }};display:block"></span></sc-for></div>
+<span style="font:600 10px/1 'JetBrains Mono',monospace;color:var(--fa)">{{ obStep }}</span>
+</div>
+<div style="flex:none;padding:14px 16px 10px">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+<div>
+<div style="font:600 20px/1.15 'Inter Tight',sans-serif;letter-spacing:-.03em">Recovery phrase</div>
+<div style="font-size:11.5px;color:var(--mu);margin-top:5px;line-height:1.5">Type each word, or paste them all at once.</div>
+</div>
+<div style="display:flex;padding:2px;border-radius:8px;background:var(--s2);border:1px solid var(--line);gap:2px;flex:none">
+<sc-for list="{{ lenOpts }}" as="l" hint-placeholder-count="2">
+<button onClick="{{ l.go }}" style="padding:5px 9px;border-radius:6px;font:700 11px/1 'JetBrains Mono',monospace;background:{{ l.bg }};color:{{ l.fg }}">{{ l.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:8px;margin-top:12px">
+<span style="font:600 10.5px/1 'JetBrains Mono',monospace;color:var(--mu);flex:none">{{ filledCount }}</span>
+<span style="flex:1;height:3px;border-radius:3px;background:var(--s3);overflow:hidden;display:block"><span style="display:block;height:100%;border-radius:3px;background:var(--ac);width:{{ fillPct }}"></span></span>
+<button style="display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:600;color:var(--mu);padding:4px 8px;border-radius:7px;background:var(--s2);border:1px solid var(--line);flex:none">{{ ico.paste }}Paste</button>
+</div>
+</div>
+<div style="flex:1;min-height:0;overflow:auto;padding:2px 16px 12px">
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px">
+<sc-for list="{{ cells }}" as="c" hint-placeholder-count="12">
+<div style="display:flex;align-items:center;gap:8px;height:34px;padding:0 10px;border-radius:9px;border:1px solid {{ c.bd }};background:var(--s2);box-shadow:{{ c.ring }}">
+<span style="font:500 10px/1 'JetBrains Mono',monospace;color:{{ c.nfg }};width:14px;text-align:right;flex:none">{{ c.n }}</span>
+<input defaultValue="{{ c.word }}" placeholder="{{ c.ph }}" style="flex:1;min-width:0;width:100%;border:none;background:none;font:600 12.5px/1 'JetBrains Mono',monospace;color:var(--tx)" />
+<span style="flex:none;display:grid;place-items:center;color:var(--ac)">{{ c.mark }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="flex:none;display:flex;align-items:center;gap:5px;padding:8px 12px;border-top:1px solid var(--line);background:var(--s1)">
+<span style="font:600 9.5px/1 'JetBrains Mono',monospace;color:var(--fa);flex:none;width:22px;text-align:center">#10</span>
+<sc-for list="{{ suggestions }}" as="s" hint-placeholder-count="4">
+<button style="flex:1;min-width:0;padding:7px 4px;border-radius:7px;font:600 11px/1 'JetBrains Mono',monospace;border:1px solid {{ s.bd }};background:{{ s.bg }};color:{{ s.fg }}"><span style="color:var(--ac)">{{ s.hit }}</span>{{ s.rest }}</button>
+</sc-for>
+</div>
+<div style="flex:none;padding:10px 16px 16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:9px">
+<div style="display:flex;align-items:center;justify-content:space-between;font-size:10.5px">
+<span style="display:flex;align-items:center;gap:6px;color:var(--fa)">{{ ico.clock }}Phrase check: {{ ckLabel }}</span>
+<span style="color:var(--fa)">Stays in this browser</span>
+</div>
+<button onClick="{{ goCreateRestore }}" style="display:flex;align-items:center;justify-content:center;gap:7px;padding:12px;border-radius:11px;background:var(--s3);color:var(--fa);font-size:13px;font-weight:700">Continue {{ ico.right }}</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isDone }}" hint-placeholder-val="{{ false }}">
+<div style="height:100%;display:flex;flex-direction:column;padding:0 18px 18px;position:relative;overflow:hidden;animation:kpIn .25s ease both">
+<div style="position:absolute;width:420px;height:420px;left:-30px;top:-250px;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, var(--acl), transparent 70%);pointer-events:none"></div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;text-align:center">
+<span style="width:58px;height:58px;border-radius:50%;background:var(--acs);color:var(--ac);display:grid;place-items:center">{{ ico.checkBig }}</span>
+<div style="font:600 22px/1.15 'Inter Tight',sans-serif;letter-spacing:-.03em;margin-top:16px">{{ doneTitle }}</div>
+<div style="font-size:11.5px;color:var(--mu);margin-top:7px;line-height:1.5;max-width:250px">{{ doneSub }}</div>
+<div style="width:100%;margin-top:26px;border-radius:12px;border:1px solid var(--line);background:var(--s1);padding:10px;text-align:left">
+<div style="display:flex;align-items:center;gap:7px">
+<span style="flex:1;height:26px;border-radius:999px;background:var(--s2);display:flex;align-items:center;padding:0 10px;font:500 10px/1 'JetBrains Mono',monospace;color:var(--fa)">any-site.example</span>
+<span style="width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--ac);background:var(--acs);box-shadow:0 0 0 1.5px var(--ac)">{{ ico.puzzle }}</span>
+<span style="width:22px;height:22px;border-radius:50%;background:var(--s3);display:block"></span>
+</div>
+<div style="margin:8px 26px 0 auto;width:190px;border-radius:10px;border:1px solid var(--line2);background:var(--s2);padding:6px">
+<div style="display:flex;align-items:center;gap:8px;padding:6px 7px;border-radius:7px;background:var(--glass)">
+<span style="width:18px;height:18px;border-radius:5px;overflow:hidden;display:block;flex:none"><svg width="18" height="18" viewBox="0 0 18 18" style="display:block"><use href="{{ icoHref }}" width="18" height="18"></use></svg></span>
+<span style="flex:1;font:600 12px/1 'Inter Tight',sans-serif;letter-spacing:-.02em"><span style="color:var(--ac)">Kas</span>ten</span>
+<span style="color:var(--ac);display:grid;place-items:center">{{ ico.pin }}</span>
+</div>
+</div>
+</div>
+<div style="font-size:12px;font-weight:600;margin-top:12px">Pin Kasten to your toolbar</div>
+<div style="font-size:11px;color:var(--fa);margin-top:4px">Click the puzzle piece, then the pin.</div>
+</div>
+<button onClick="{{ goHome }}" style="position:relative;display:flex;align-items:center;justify-content:center;gap:7px;padding:12px;border-radius:11px;background:var(--ac);color:var(--onac);font-size:13px;font-weight:700">Open my wallet {{ ico.right }}</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isWelcome }}" hint-placeholder-val="{{ false }}">
+<div style="height:100%;display:flex;flex-direction:column;padding:0 22px 20px;position:relative;overflow:hidden;animation:kpIn .25s ease both">
+<div style="position:absolute;width:420px;height:420px;left:-30px;top:-240px;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, var(--acl), transparent 70%);pointer-events:none"></div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;text-align:center">
+<span style="width:76px;height:76px;border-radius:20px;overflow:hidden;display:block;box-shadow:0 18px 40px -16px rgba(0,0,0,.6)"><svg width="76" height="76" viewBox="0 0 76 76" style="display:block"><use href="{{ icoHref }}" width="76" height="76"></use></svg></span>
+<div style="font:600 26px/1.1 'Inter Tight',sans-serif;letter-spacing:-.035em;margin-top:18px">Your Kaspa,<br /><span style="color:var(--ac)">held by you alone.</span></div>
+<div style="font-size:12px;color:var(--mu);margin-top:10px;line-height:1.55;max-width:260px">Keys are made in your browser and never leave it.</div>
+</div>
+<div style="position:relative;display:flex;flex-direction:column;gap:8px">
+<button onClick="{{ goCreate }}" style="display:flex;align-items:center;justify-content:center;gap:7px;padding:12px;border-radius:11px;background:var(--ac);color:var(--onac);font-size:13px;font-weight:700">{{ ico.plus }}Create a wallet</button>
+<button onClick="{{ goRestore }}" style="display:flex;align-items:center;justify-content:center;gap:7px;padding:12px;border-radius:11px;border:1px solid var(--line2);background:var(--s2);font-size:13px;font-weight:600">{{ ico.down }}I have a recovery phrase</button>
+<div style="display:flex;align-items:center;justify-content:center;gap:6px;font-size:10.5px;color:var(--fa);margin-top:4px">{{ ico.shieldSm }}About a minute · nothing leaves this browser</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+
+<sc-if value="{{ showTabs }}" hint-placeholder-val="{{ true }}">
+<div style="height:56px;flex:none;display:flex;border-top:1px solid var(--line);background:var(--s1);padding:0 6px">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+<button onClick="{{ t.go }}" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:{{ t.fg }}">
+<span style="display:grid;place-items:center">{{ t.icon }}</span>
+<span style="font-size:10px;font-weight:600">{{ t.label }}</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ switcher }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ toggleSwitcher }}" style="position:absolute;inset:0;z-index:10;background:rgba(0,0,0,.45);display:flex;align-items:flex-end">
+<div style="width:100%;border-radius:16px 16px 0 0;background:var(--s1);border-top:1px solid var(--line2);padding:8px 0 10px;animation:kpIn .2s ease both">
+<div style="width:36px;height:4px;border-radius:3px;background:var(--line2);margin:2px auto 10px"></div>
+<div style="padding:0 16px 8px;font:700 9.5px/1 'Inter',sans-serif;letter-spacing:.14em;color:var(--fa)">WALLETS</div>
+<sc-for list="{{ wallets }}" as="w" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;gap:10px;padding:9px 16px;background:{{ w.bg }}">
+<span style="width:28px;height:28px;border-radius:8px;display:grid;place-items:center;flex:none;background:{{ w.ibg }};color:{{ w.c }}">{{ ico.wallet }}</span>
+<span style="flex:1"><span style="display:block;font-size:12.5px;font-weight:600">{{ w.name }}</span><span style="display:block;font-size:10.5px;color:var(--fa)">{{ w.sub }}</span></span>
+<span style="color:var(--ac)">{{ w.tick }}</span>
+</div>
+</sc-for>
+<div style="display:flex;gap:8px;padding:8px 14px 0">
+<button onClick="{{ goCreate }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:9px;border-radius:9px;background:var(--s2);font-size:11.5px;font-weight:600">{{ ico.plus }}New</button>
+<button onClick="{{ goRestore }}" style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:9px;border-radius:9px;background:var(--s2);font-size:11.5px;font-weight:600">{{ ico.down }}Restore</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:360,&quot;height&quot;:600},&quot;screen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;send&quot;,&quot;confirm&quot;,&quot;sent&quot;,&quot;receive&quot;,&quot;activity&quot;,&quot;sites&quot;,&quot;settings&quot;,&quot;connect&quot;,&quot;sign&quot;,&quot;unlock&quot;,&quot;welcome&quot;,&quot;create&quot;,&quot;seed&quot;,&quot;seedRevealed&quot;,&quot;verify&quot;,&quot;done&quot;,&quot;restore&quot;,&quot;restore24&quot;,&quot;createRestore&quot;,&quot;doneRestore&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  initFor(sc) {
+    const m = {
+      seedRevealed: { route: 'seed', seedHidden: false, ack: true, flow: 'create' },
+      seed: { route: 'seed', seedHidden: true, ack: false, flow: 'create' },
+      create: { route: 'create', flow: 'create' },
+      restore: { route: 'restore', flow: 'restore', words: 12 },
+      restore24: { route: 'restore', flow: 'restore', words: 24 },
+      createRestore: { route: 'create', flow: 'restore' },
+      doneRestore: { route: 'done', flow: 'restore' },
+      done: { route: 'done', flow: 'create' }
+    };
+    return m[sc] || { route: sc || 'home' };
+  }
+  state = Object.assign({ pw: '', upw: '', copied: false, hidden: false, fee: 0, filter: 0, acct: 0, switcher: false, flow: 'create', words: 12, seedHidden: true, ack: false, picks: { 4: 'unit', 8: 'physical' } }, this.initFor(this.props.screen));
+
+  componentDidMount() {
+    if (window.lucide) { this.forceUpdate(); return; }
+    let s = document.getElementById('lucide-umd');
+    if (!s) {
+      s = document.createElement('script');
+      s.id = 'lucide-umd';
+      s.src = 'https://unpkg.com/lucide@0.470.0/dist/umd/lucide.js';
+      document.head.appendChild(s);
+    }
+    s.addEventListener('load', () => this.forceUpdate());
+    setTimeout(() => this.forceUpdate(), 1200);
+  }
+
+  componentDidUpdate(prev) {
+    if (prev.screen !== this.props.screen && this.props.screen) this.setState(this.initFor(this.props.screen));
+  }
+
+  icon(names, size, sw) {
+    const L = window.lucide;
+    const box = { width: size || 16, height: size || 16, display: 'block', flex: 'none' };
+    if (!L || !L.icons) return React.createElement('span', { style: box });
+    let node = null;
+    for (const n of [].concat(names)) { if (L.icons[n]) { node = L.icons[n]; break; } }
+    if (!node) return React.createElement('span', { style: box });
+    const kids = typeof node[0] === 'string' ? (node[2] || []) : node;
+    return React.createElement('svg', {
+      width: size || 16, height: size || 16, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor',
+      strokeWidth: sw || 1.9, strokeLinecap: 'round', strokeLinejoin: 'round', style: { display: 'block', flex: 'none' }
+    }, kids.map((c, i) => React.createElement(c[0], Object.assign({ key: i }, c[1]))));
+  }
+
+  go(route) { return () => this.setState({ route, switcher: false, pw: '' }); }
+
+  renderVals() {
+    const s = this.state, r = s.route;
+    const I = (n, z, w) => this.icon(n, z, w);
+    const light = this.props.theme === 'light';
+    const ico = {
+      chevD: I('ChevronDown', 13), expand: I(['PanelRightOpen', 'Maximize2'], 15), lock: I('Lock', 15), lock12: I('Lock', 11),
+      unlock: I('LockOpen', 15), eye: I('Eye', 13), up: I('ArrowUpRight', 17), down: I('ArrowDownLeft', 15),
+      left: I('ArrowLeft', 15), right: I('ArrowRight', 14), check: I('Check', 13), checkBig: I('Check', 28, 2.4),
+      key: I('KeyRound', 14), shield: I('ShieldCheck', 15), refresh: I('RefreshCw', 13), search: I('Search', 14),
+      x: I('X', 13), warn: I(['TriangleAlert', 'AlertTriangle'], 13), plus: I('Plus', 14), ext: I('ExternalLink', 11),
+      book: I(['BookUser', 'Contact'], 12), wallet: I('Wallet', 14),
+      tag: I('Tag', 14), paste: I(['ClipboardPaste', 'Clipboard'], 12), clock: I('Clock', 12), shieldSm: I('ShieldCheck', 12),
+      puzzle: I('Puzzle', 15), pin: I('Pin', 13), eyeSm: I('Eye', 14)
+    };
+    const appScreens = ['home', 'send', 'confirm', 'sent', 'receive', 'activity', 'sites', 'settings'];
+    const tabScreens = ['home', 'activity', 'sites', 'settings'];
+    const reqScreens = ['connect', 'sign'];
+    const tabActive = r === 'send' || r === 'confirm' || r === 'sent' || r === 'receive' ? 'home' : r;
+    const tabs = [['home', 'Home', 'House'], ['activity', 'Activity', 'History'], ['sites', 'Sites', 'Globe'], ['settings', 'Settings', 'Settings2']]
+      .map(([id, label, icn]) => ({ label, icon: I(icn, 18), go: this.go(id), fg: tabActive === id ? 'var(--ac)' : 'var(--fa)' }));
+
+    const txData = [
+      { head: 'TODAY', title: 'Swap on KasSwap', amount: '−250.00', time: '09:52', in: false, sub: 'via app.kasswap.example' },
+      { title: 'Received from kaspa:qr8…4m2v', amount: '+2,400.00', time: '09:41', in: true, sub: 'Confirmed' },
+      { title: 'Sent to Exchange deposit', amount: '−1,250.00', time: '08:12', in: false, sub: 'Confirmed' },
+      { head: 'YESTERDAY', title: 'Received from kaspa:qz1…9plk', amount: '+318.50', time: '21:03', in: true, sub: 'Confirmed' },
+      { title: 'Mining payout', amount: '+96.20', time: '11:58', in: true, sub: 'Confirmed' },
+      { head: 'EARLIER', title: 'Received from kaspa:qp4…6bnm', amount: '+12,000.00', time: 'Aug 28', in: true, sub: 'Confirmed' },
+      { title: 'Sent to Hardware wallet', amount: '−3,200.00', time: 'Aug 24', in: false, sub: 'Confirmed' }
+    ];
+    const txs = txData.map(t => ({
+      head: t.head || null, title: t.title, amount: t.amount, time: t.time, sub: t.sub,
+      icon: I(t.in ? 'ArrowDownLeft' : 'ArrowUpRight', 14), c: t.in ? 'var(--ac)' : 'var(--tx)', ibg: t.in ? 'var(--acs)' : 'var(--s3)'
+    }));
+
+    const pwOk = s.pw.length >= 4;
+
+    const flow = s.flow;
+    const segN = flow === 'restore' ? 2 : 3;
+    const segI = r === 'restore' ? 0 : r === 'create' ? (flow === 'restore' ? 1 : 0) : r === 'seed' ? 1 : r === 'verify' ? 2 : segN;
+    const obSegs = [];
+    for (let i = 0; i < segN; i++) obSegs.push({ bg: i <= segI ? 'var(--ac)' : 'var(--line2)' });
+    const seedWords = ['spray', 'quiz', 'warm', 'unit', 'safe', 'key', 'person', 'physical', 'tower', 'brave', 'sausage', 'utility'];
+    const filled = seedWords.slice(0, 9);
+    const total = s.words;
+    const cells = [];
+    for (let i = 0; i < total; i++) {
+      const word = filled[i] || '';
+      const f = i === 9;
+      cells.push({
+        n: i + 1, word: f ? 'brav' : word, ph: word || f ? '' : '·',
+        bd: f ? 'var(--acl)' : 'var(--line)', ring: f ? '0 0 0 3px var(--acs)' : 'none',
+        nfg: word || f ? 'var(--mu)' : 'var(--fa)', mark: word ? I('Check', 12) : null
+      });
+    }
+    const vDefs = [
+      { n: 4, answer: 'unit', opts: ['orbit', 'unit', 'unfair', 'ugly'] },
+      { n: 8, answer: 'physical', opts: ['pistol', 'phrase', 'physical', 'piano'] },
+      { n: 12, answer: 'utility', opts: ['update', 'usual', 'uncle', 'utility'] }
+    ];
+    let correct = 0;
+    const verify = vDefs.map(v => {
+      const picked = s.picks[v.n];
+      const ok = picked === v.answer;
+      if (ok) correct++;
+      return {
+        n: v.n,
+        state: picked ? (ok ? 'Correct' : 'Not quite') : 'Choose one',
+        stateC: picked ? (ok ? 'var(--ac)' : 'var(--err)') : 'var(--fa)',
+        nbg: ok ? 'var(--acs)' : 'var(--s2)', nfg: ok ? 'var(--ac)' : 'var(--mu)',
+        options: v.opts.map(w => {
+          const on = picked === w;
+          const good = on && ok, bad = on && !ok;
+          return {
+            w, go: () => this.setState({ picks: Object.assign({}, s.picks, { [v.n]: w }) }),
+            bd: good ? 'var(--acl)' : bad ? 'var(--err)' : 'var(--line)',
+            bg: good ? 'var(--acs)' : bad ? 'var(--errs)' : 'var(--s2)',
+            fg: good ? 'var(--ac)' : bad ? 'var(--err)' : 'var(--mu)'
+          };
+        })
+      };
+    });
+    const allOk = correct === 3;
+    const ob = {
+      isCreate: r === 'create', isSeed: r === 'seed', isVerify: r === 'verify', isRestore: r === 'restore', isDone: r === 'done',
+      obSegs, obStep: Math.min(segI + 1, segN) + ' / ' + segN,
+      goCreate: () => this.setState({ route: 'create', flow: 'create', switcher: false }),
+      goRestore: () => this.setState({ route: 'restore', flow: 'restore', switcher: false }),
+      goWelcome: this.go('welcome'),
+      createBack: flow === 'restore' ? () => this.setState({ route: 'restore' }) : this.go('welcome'),
+      createNext: flow === 'restore' ? () => this.setState({ route: 'done' }) : () => this.setState({ route: 'seed', seedHidden: true, ack: false }),
+      createTitle: flow === 'restore' ? 'Lock it in this browser' : 'Name and lock it',
+      createSub: flow === 'restore' ? 'Your phrase checks out. Name this wallet and set a password for this browser.' : 'The password encrypts this wallet in this browser. It is not a backup.',
+      seedBack: () => this.setState({ route: 'create' }),
+      verifyBack: () => this.setState({ route: 'seed' }),
+      goVerify: () => s.ack && this.setState({ route: 'verify' }),
+      goDone: () => allOk && this.setState({ route: 'done' }),
+      goCreateRestore: () => this.setState({ route: 'create', flow: 'restore' }),
+      seed: seedWords.map((w, i) => ({ n: i + 1, word: s.seedHidden ? '••••••' : w })),
+      seedHidden: s.seedHidden, seedBlur: s.seedHidden ? 'blur(5px)' : 'none',
+      revealSeed: () => this.setState({ seedHidden: false }),
+      toggleAck: () => this.setState({ ack: !s.ack }),
+      ackBd: s.ack ? 'var(--acl)' : 'var(--line)', ackBg: s.ack ? 'var(--acs)' : 'var(--s1)',
+      ackBox: s.ack ? 'var(--ac)' : 'var(--line2)', ackFill: s.ack ? 'var(--ac)' : 'transparent',
+      ackTick: s.ack ? I('Check', 12, 2.8) : null,
+      ackBtnBg: s.ack ? 'var(--ac)' : 'var(--s3)', ackBtnFg: s.ack ? 'var(--onac)' : 'var(--fa)',
+      verify, verifyHint: correct + ' of 3 confirmed',
+      finBg: allOk ? 'var(--ac)' : 'var(--s3)', finFg: allOk ? 'var(--onac)' : 'var(--fa)',
+      cells, filledCount: '9 of ' + total,
+      fillPct: Math.round((9 / total) * 100) + '%',
+      lenOpts: [12, 24].map(n => ({
+        label: String(n), go: () => this.setState({ words: n }),
+        bg: total === n ? 'var(--ac)' : 'transparent', fg: total === n ? 'var(--onac)' : 'var(--mu)'
+      })),
+      suggestions: [['brav', 'e'], ['brav', 'ery'], ['brav', 'o'], ['brav', 'ado']].map(([hit, rest], i) => ({
+        hit, rest, bg: i === 0 ? 'var(--acs)' : 'var(--s2)', bd: i === 0 ? 'var(--acl)' : 'var(--line)', fg: i === 0 ? 'var(--tx)' : 'var(--mu)'
+      })),
+      ckLabel: (total - 9) + ' more to go',
+      doneTitle: flow === 'restore' ? 'Wallet restored' : 'You’re all set',
+      doneSub: flow === 'restore' ? 'Everyday is back, with its full history.' : 'Everyday is ready. Your words are the only backup.'
+    };
+
+    return Object.assign(ob, {
+      rootClass: light ? 'kp lt' : 'kp',
+      icoHref: light ? '#kpIcoL' : '#kpIcoD',
+      ico, tabs, txs, recent: txs.slice(0, 3),
+      showAppHeader: appScreens.indexOf(r) >= 0, showReqHeader: reqScreens.indexOf(r) >= 0,
+      showTabs: tabScreens.indexOf(r) >= 0,
+      isHome: r === 'home', isSend: r === 'send', isConfirm: r === 'confirm', isSent: r === 'sent', isReceive: r === 'receive',
+      isActivity: r === 'activity', isSites: r === 'sites', isSettings: r === 'settings', isConnect: r === 'connect',
+      isSign: r === 'sign', isUnlock: r === 'unlock', isWelcome: r === 'welcome',
+      goHome: this.go('home'), goSend: this.go('send'), goConfirm: this.go('confirm'), goSent: this.go('sent'),
+      goReceive: this.go('receive'), goActivity: this.go('activity'), goSites: this.go('sites'), goUnlock: this.go('unlock'),
+      switcher: s.switcher, toggleSwitcher: () => this.setState({ switcher: !s.switcher }),
+      toggleHide: () => this.setState({ hidden: !s.hidden }),
+      balInt: s.hidden ? '••••••' : '18,346', balDec: s.hidden ? '' : '.61', balUsd: s.hidden ? '$••••' : '≈ $1,282.43',
+      copy: () => { this.setState({ copied: true }); setTimeout(() => this.setState({ copied: false }), 1500); },
+      copyLabel: s.copied ? 'Copied' : 'Copy', copyFg: s.copied ? 'var(--ac)' : 'var(--tx)',
+      copyIcon: s.copied ? I('Check', 15) : I('Copy', 15), copyIconOn: s.copied ? I('Check', 14) : I('Copy', 14),
+      fees: ['Standard', 'Fast', 'Custom'].map((label, i) => ({
+        label, go: () => this.setState({ fee: i }),
+        bg: s.fee === i ? 'var(--s1)' : 'transparent', fg: s.fee === i ? 'var(--tx)' : 'var(--mu)',
+        ring: s.fee === i ? 'inset 0 0 0 1px var(--line2)' : 'none'
+      })),
+      filters: ['All', 'Received', 'Sent'].map((label, i) => ({
+        label, go: () => this.setState({ filter: i }),
+        bg: s.filter === i ? 'var(--acs)' : 'transparent', fg: s.filter === i ? 'var(--ac)' : 'var(--mu)'
+      })),
+      confirmRows: [
+        { k: 'To', v: 'kaspa:qypn8f…s6y8u2' }, { k: 'Label', v: 'Exchange deposit' }, { k: 'Fee', v: '0.0000216 KAS' }
+      ],
+      signRows: [
+        { k: 'To', v: 'kaspa:qq3kd9…w7m1az' }, { k: 'Purpose', v: 'Swap 250 KAS → NACHO' }, { k: 'Fee', v: '0.0000216 KAS' }
+      ],
+      pw: s.pw, onPw: e => this.setState({ pw: e.target.value }),
+      pwBd: pwOk ? 'var(--acl)' : 'var(--line2)', pwRing: pwOk ? '0 0 0 3px var(--acs)' : 'none',
+      signBg: pwOk ? 'var(--ac)' : 'var(--s3)', signFg: pwOk ? 'var(--onac)' : 'var(--fa)',
+      upw: s.upw, onUpw: e => this.setState({ upw: e.target.value }),
+      sites: [
+        { host: 'app.kasswap.example', letter: 'K', tile: '#7B61FF', sub: 'Current tab · Account 1', cur: true, perms: ['View address', 'Request signing'] },
+        { host: 'kasplay.example', letter: 'P', tile: '#E8693A', sub: 'Last used 2 days ago', cur: false, perms: ['View address'] },
+        { host: 'nacho.example', letter: 'N', tile: '#2B8AE6', sub: 'Last used Aug 12', cur: false, perms: ['View address', 'Request signing'] }
+      ].map(x => Object.assign({}, x, {
+        bd: x.cur ? 'var(--acl)' : 'var(--line)', bg: x.cur ? 'var(--acd)' : 'var(--s1)', subC: x.cur ? 'var(--ac)' : 'var(--fa)'
+      })),
+      settingRows: [
+        { icon: I('Timer', 15), k: 'Auto-lock', d: 'When the browser is idle', v: '5 min', vc: 'var(--mu)' },
+        { icon: I('KeyRound', 15), k: 'Password to sign', d: 'Every send and site request', v: 'Always', vc: 'var(--ac)' },
+        { icon: I('Globe', 15), k: 'Connected sites', d: '3 sites', v: 'Manage', vc: 'var(--mu)' },
+        { icon: I(['RadioTower', 'Radio'], 15), k: 'Network', d: 'Public node · 42ms', v: 'Mainnet', vc: 'var(--mu)' },
+        { icon: I('Sun', 15), k: 'Appearance', d: 'Follows browser', v: 'System', vc: 'var(--mu)' },
+        { icon: I('Keyboard', 15), k: 'Shortcut', d: 'Open Kasten from any tab', v: 'Alt + K', vc: 'var(--mu)' }
+      ],
+      connectAccts: [['Account 1 · main', '18,204.61'], ['Account 2 · savings', '142.00']].map(([name, bal], i) => ({
+        name, bal, go: () => this.setState({ acct: i }),
+        bd: s.acct === i ? 'var(--acl)' : 'var(--line)', bg: s.acct === i ? 'var(--acs)' : 'var(--s1)',
+        rb: s.acct === i ? 'var(--ac)' : 'var(--line2)', dot: s.acct === i ? 'var(--ac)' : 'transparent'
+      })),
+      wallets: [['Everyday', '18,346.61 KAS', true], ['Cold storage', 'Locked', false], ['Mining', 'Locked', false]].map(([name, sub, on]) => ({
+        name, sub, bg: on ? 'var(--glass)' : 'transparent', ibg: on ? 'var(--acs)' : 'var(--s3)', c: on ? 'var(--ac)' : 'var(--mu)',
+        tick: on ? I('Check', 15) : null
+      }))
+    });
+  }
+}
+</script>
+</body>
+</html>

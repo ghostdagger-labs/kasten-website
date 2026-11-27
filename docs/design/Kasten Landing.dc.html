@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+html{background:#0A0E0D}
+body{margin:0;background:#0A0E0D;color:#E9F0EE;font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#3EE0BD;text-decoration:none}
+a:hover{color:#E9F0EE}
+details summary::-webkit-details-marker{display:none}
+details summary{list-style:none}
+@keyframes lpDrift{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-4%,3%,0) scale(1.07)}}
+@keyframes lpFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+</style>
+</helmet>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<linearGradient id="lpInkFace" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#164A41"></stop><stop offset="1" stop-color="#051C18"></stop></linearGradient>
+<linearGradient id="lpPlate" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#3EE0BD"></stop><stop offset="1" stop-color="#0FB894"></stop></linearGradient>
+<symbol id="lpIco" viewBox="0 0 1024 1024">
+<rect width="1024" height="1024" fill="url(#lpInkFace)"></rect>
+<rect x="150" y="150" width="724" height="724" rx="120" fill="none" stroke="#FFFFFF" stroke-opacity=".16" stroke-width="14"></rect>
+<rect x="84" y="296" width="52" height="140" rx="22" fill="#E3ECE8"></rect><rect x="84" y="588" width="52" height="140" rx="22" fill="#E3ECE8"></rect>
+<circle cx="230" cy="230" r="18" fill="#FFFFFF" opacity=".28"></circle><circle cx="794" cy="230" r="18" fill="#FFFFFF" opacity=".28"></circle>
+<circle cx="230" cy="794" r="18" fill="#FFFFFF" opacity=".28"></circle><circle cx="794" cy="794" r="18" fill="#FFFFFF" opacity=".28"></circle>
+<rect x="392" y="350" width="240" height="320" rx="58" fill="url(#lpPlate)"></rect>
+<circle cx="512" cy="470" r="42" fill="#06201B"></circle><rect x="491" y="488" width="42" height="104" rx="21" fill="#06201B"></rect>
+</symbol>
+</defs>
+</svg>
+
+<div style="min-height:100vh;background:#0A0E0D;overflow:hidden">
+
+<header style="position:sticky;top:0;z-index:20;background:rgba(10,14,13,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)">
+<div style="max-width:1200px;margin:0 auto;padding:0 28px;height:66px;display:flex;align-items:center;gap:28px">
+<a href="#top" style="display:flex;align-items:center;gap:10px;color:#E9F0EE">
+<span style="width:30px;height:30px;border-radius:8px;overflow:hidden;display:block;flex:none"><svg width="30" height="30" viewBox="0 0 30 30" style="display:block"><use href="#lpIco" width="30" height="30"></use></svg></span>
+<span style="font:600 18px/1 'Inter Tight',sans-serif;letter-spacing:-.03em"><span style="color:#3EE0BD">Kas</span>ten</span>
+</a>
+<nav style="display:flex;gap:24px;flex-wrap:wrap">
+<a href="#features" style="font-size:13.5px;font-weight:500;color:#94A29E">Features</a>
+<a href="#security" style="font-size:13.5px;font-weight:500;color:#94A29E">Security</a>
+<a href="#platforms" style="font-size:13.5px;font-weight:500;color:#94A29E">Download</a>
+<a href="#faq" style="font-size:13.5px;font-weight:500;color:#94A29E">FAQ</a>
+</nav>
+<span style="flex:1"></span>
+<a href="#support" style="font-size:13.5px;font-weight:500;color:#94A29E">Support</a>
+<a href="#platforms" style="display:flex;align-items:center;gap:8px;padding:9px 16px;border-radius:10px;background:#3EE0BD;color:#04150F;font-size:13.5px;font-weight:700">{{ ico.download }}Get Kasten</a>
+</div>
+</header>
+
+<section id="top" style="position:relative">
+<div style="position:absolute;width:900px;height:900px;right:-260px;top:-380px;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, rgba(62,224,189,.16), transparent 70%);animation:lpDrift 24s ease-in-out infinite;pointer-events:none"></div>
+<div style="position:absolute;width:700px;height:700px;left:-320px;top:220px;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, rgba(62,224,189,.07), transparent 70%);animation:lpDrift 30s ease-in-out infinite reverse;pointer-events:none"></div>
+<div style="position:relative;max-width:1200px;margin:0 auto;padding:84px 28px 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:56px;align-items:center">
+<div>
+<div style="display:inline-flex;align-items:center;gap:9px;padding:6px 12px 6px 8px;border-radius:999px;border:1px solid rgba(62,224,189,.25);background:rgba(62,224,189,.07);margin-bottom:26px">
+<span style="font:700 10px/1 'Inter',sans-serif;letter-spacing:.08em;padding:4px 7px;border-radius:999px;background:#3EE0BD;color:#04150F">NEW</span>
+<span style="font-size:12.5px;font-weight:500;color:#C9D3D0">Chrome extension in development</span>
+</div>
+<h1 style="margin:0;font:600 clamp(48px,7vw,84px)/.98 'Inter Tight',sans-serif;letter-spacing:-.05em;text-wrap:balance">Your Kaspa.<br /><span style="color:#3EE0BD">Your keys.</span></h1>
+<p style="margin:26px 0 0;font-size:18px;line-height:1.6;color:#A9B6B2;max-width:520px;text-wrap:pretty">A self-custody wallet for KAS on desktop and in your browser. Send, receive and connect to Kaspa apps, with keys that are encrypted on your device and never leave it.</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:34px">
+<a href="#platforms" style="display:flex;align-items:center;gap:10px;padding:15px 22px;border-radius:12px;background:#3EE0BD;color:#04150F;font-size:15px;font-weight:700;box-shadow:0 14px 34px -14px rgba(62,224,189,.7)">{{ ico.monitor }}Download for desktop</a>
+<a href="#platforms" style="display:flex;align-items:center;gap:10px;padding:15px 22px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03);color:#E9F0EE;font-size:15px;font-weight:600">{{ ico.chrome }}Get the Chrome extension</a>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:20px;margin-top:30px">
+<sc-for list="{{ trust }}" as="t" hint-placeholder-count="3">
+<span style="display:flex;align-items:center;gap:8px;font-size:13px;color:#7F8D89"><span style="color:#3EE0BD;display:grid;place-items:center">{{ ico.check }}</span>{{ t }}</span>
+</sc-for>
+</div>
+</div>
+
+<div style="position:relative;display:flex;justify-content:center;min-height:640px">
+<div style="position:absolute;inset:40px 20px 20px 20px;border-radius:32px;border:1px solid rgba(255,255,255,.06);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0))"></div>
+<div style="position:relative;margin-top:0;border-radius:14px;overflow:hidden;box-shadow:0 50px 100px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.09)">
+<dc-import name="KastenPopup" screen="home" theme="dark" hint-size="360px,600px"></dc-import>
+</div>
+<div style="position:absolute;right:-6px;top:120px;width:250px;border-radius:14px;background:#111716;border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 60px -20px rgba(0,0,0,.8);padding:14px;animation:lpFloat 6s ease-in-out infinite">
+<div style="display:flex;align-items:center;gap:9px">
+<span style="width:28px;height:28px;border-radius:8px;background:#7B61FF;color:#fff;display:grid;place-items:center;font:700 12px/1 'Inter Tight',sans-serif">K</span>
+<span style="flex:1;min-width:0"><span style="display:block;font-size:12px;font-weight:600">Transaction request</span><span style="display:block;font:500 10.5px/1.4 'JetBrains Mono',monospace;color:#65726F">app.kasswap.example</span></span>
+</div>
+<div style="font:600 22px/1 'Inter Tight',sans-serif;letter-spacing:-.03em;margin:12px 0 10px">250.00 <span style="font-size:12px;color:#3EE0BD">KAS</span></div>
+<div style="display:flex;gap:6px"><span style="flex:1;padding:8px;border-radius:8px;background:#1D2624;text-align:center;font-size:11.5px;font-weight:600">Reject</span><span style="flex:1.3;padding:8px;border-radius:8px;background:#3EE0BD;color:#04150F;text-align:center;font-size:11.5px;font-weight:700">Approve</span></div>
+</div>
+<div style="position:absolute;left:-4px;bottom:70px;display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:12px;background:#111716;border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 50px -20px rgba(0,0,0,.8);animation:lpFloat 7s ease-in-out infinite reverse">
+<span style="width:30px;height:30px;border-radius:9px;background:rgba(62,224,189,.13);color:#3EE0BD;display:grid;place-items:center">{{ ico.lock }}</span>
+<span><span style="display:block;font-size:12px;font-weight:600">Password required to sign</span><span style="display:block;font-size:10.5px;color:#65726F;margin-top:2px">Every send, every site</span></span>
+</div>
+</div>
+</div>
+</section>
+
+<section style="border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);background:#0D1211">
+<div style="max-width:1200px;margin:0 auto;padding:26px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px">
+<sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:12px">
+<span style="width:36px;height:36px;border-radius:10px;background:rgba(62,224,189,.1);color:#3EE0BD;display:grid;place-items:center;flex:none">{{ p.icon }}</span>
+<span><span style="display:block;font-size:13.5px;font-weight:600">{{ p.k }}</span><span style="display:block;font-size:12px;color:#7F8D89;margin-top:2px">{{ p.d }}</span></span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section id="features" style="max-width:1200px;margin:0 auto;padding:110px 28px 40px">
+<div style="max-width:640px">
+<div style="font:700 11px/1 'Inter',sans-serif;letter-spacing:.16em;color:#3EE0BD;margin-bottom:14px">FEATURES</div>
+<h2 style="margin:0;font:600 clamp(34px,4.4vw,48px)/1.05 'Inter Tight',sans-serif;letter-spacing:-.04em;text-wrap:balance">Everything you need. Nothing that gets in the way.</h2>
+<p style="margin:18px 0 0;font-size:16.5px;line-height:1.65;color:#A9B6B2">Built for people who want to hold KAS themselves, whether it’s their first wallet or their fifth.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px;margin-top:48px">
+<sc-for list="{{ features }}" as="f" hint-placeholder-count="6">
+<div style="border-radius:18px;border:1px solid rgba(255,255,255,.07);background:#0F1514;padding:26px;display:flex;flex-direction:column;gap:12px">
+<span style="width:42px;height:42px;border-radius:12px;background:rgba(62,224,189,.1);color:#3EE0BD;display:grid;place-items:center">{{ f.icon }}</span>
+<div style="font:600 19px/1.25 'Inter Tight',sans-serif;letter-spacing:-.02em;margin-top:6px">{{ f.k }}</div>
+<div style="font-size:14px;line-height:1.65;color:#94A29E">{{ f.d }}</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:80px 28px">
+<div style="border-radius:28px;border:1px solid rgba(255,255,255,.07);background:#0D1211;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px;align-items:center;position:relative;overflow:hidden">
+<div style="position:absolute;width:600px;height:600px;left:-200px;bottom:-380px;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, rgba(62,224,189,.12), transparent 70%);pointer-events:none"></div>
+<div style="position:relative">
+<div style="font:700 11px/1 'Inter',sans-serif;letter-spacing:.16em;color:#3EE0BD;margin-bottom:14px">SETUP</div>
+<h2 style="margin:0;font:600 clamp(30px,3.8vw,42px)/1.08 'Inter Tight',sans-serif;letter-spacing:-.04em;text-wrap:balance">Ready in about a minute.</h2>
+<p style="margin:16px 0 30px;font-size:16px;line-height:1.65;color:#A9B6B2;max-width:460px">No account, no email, no ID. Setup walks you through it one step at a time and checks your backup before you start.</p>
+<div style="display:flex;flex-direction:column;gap:4px">
+<sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+<div style="display:flex;gap:16px">
+<span style="display:flex;flex-direction:column;align-items:center;flex:none">
+<span style="width:32px;height:32px;border-radius:50%;background:#3EE0BD;color:#04150F;display:grid;place-items:center;font:700 13px/1 'JetBrains Mono',monospace">{{ s.n }}</span>
+<span style="width:1.5px;flex:1;min-height:26px;background:{{ s.bar }};margin:4px 0"></span>
+</span>
+<span style="padding:5px 0 18px">
+<span style="display:block;font-size:15.5px;font-weight:600">{{ s.k }}</span>
+<span style="display:block;font-size:13.5px;color:#94A29E;margin-top:5px;line-height:1.6">{{ s.d }}</span>
+</span>
+</div>
+</sc-for>
+</div>
+<div style="font-size:13px;color:#7F8D89;margin-top:6px">Already have a wallet? Restore any 12- or 24-word phrase.</div>
+</div>
+<div style="position:relative;display:flex;gap:18px;justify-content:center;flex-wrap:wrap">
+<div style="border-radius:14px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.09)">
+<dc-import name="KastenPopup" screen="seedRevealed" theme="dark" hint-size="360px,600px"></dc-import>
+</div>
+</div>
+</div>
+</section>
+
+<section id="security" style="max-width:1200px;margin:0 auto;padding:60px 28px 90px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:56px;align-items:start">
+<div style="position:sticky;top:100px">
+<div style="font:700 11px/1 'Inter',sans-serif;letter-spacing:.16em;color:#3EE0BD;margin-bottom:14px">SECURITY &amp; PRIVACY</div>
+<h2 style="margin:0;font:600 clamp(32px,4vw,44px)/1.06 'Inter Tight',sans-serif;letter-spacing:-.04em;text-wrap:balance">Know exactly what stays on your device.</h2>
+<p style="margin:16px 0 26px;font-size:16px;line-height:1.65;color:#A9B6B2;max-width:460px">Kasten is designed so that nobody but you can move your funds, including us.</p>
+<a href="#privacy" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600">Read the privacy policy {{ ico.arrowUR }}</a>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="border-radius:18px;border:1px solid rgba(62,224,189,.22);background:rgba(62,224,189,.04);padding:24px">
+<div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:#3EE0BD;margin-bottom:14px">{{ ico.shield }}Stays on your device</div>
+<sc-for list="{{ local }}" as="x" hint-placeholder-count="4">
+<div style="display:flex;gap:11px;padding:9px 0;border-top:1px solid rgba(255,255,255,.06);font-size:14px;line-height:1.55;color:#C9D3D0"><span style="color:#3EE0BD;flex:none;margin-top:2px">{{ ico.check }}</span>{{ x }}</div>
+</sc-for>
+</div>
+<div style="border-radius:18px;border:1px solid rgba(255,255,255,.07);background:#0F1514;padding:24px">
+<div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:#E9F0EE;margin-bottom:14px">{{ ico.radio }}Talks to the network</div>
+<sc-for list="{{ network }}" as="x" hint-placeholder-count="3">
+<div style="display:flex;gap:11px;padding:9px 0;border-top:1px solid rgba(255,255,255,.06);font-size:14px;line-height:1.55;color:#A9B6B2"><span style="color:#65726F;flex:none;margin-top:2px">{{ ico.dot }}</span>{{ x }}</div>
+</sc-for>
+</div>
+<div style="border-radius:18px;border:1px solid rgba(255,255,255,.07);background:#0F1514;padding:24px">
+<div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:#E9F0EE;margin-bottom:14px">{{ ico.eyeOff }}Never collected</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ never }}" as="x" hint-placeholder-count="5">
+<span style="padding:7px 12px;border-radius:999px;background:#161D1B;border:1px solid rgba(255,255,255,.07);font-size:13px;color:#A9B6B2">{{ x }}</span>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="platforms" style="background:#0D1211;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)">
+<div style="max-width:1200px;margin:0 auto;padding:100px 28px">
+<div style="text-align:center;max-width:640px;margin:0 auto">
+<div style="font:700 11px/1 'Inter',sans-serif;letter-spacing:.16em;color:#3EE0BD;margin-bottom:14px">DOWNLOAD</div>
+<h2 style="margin:0;font:600 clamp(32px,4vw,46px)/1.06 'Inter Tight',sans-serif;letter-spacing:-.04em">One wallet, where you need it.</h2>
+<p style="margin:16px 0 0;font-size:16px;line-height:1.65;color:#A9B6B2">Each version is a complete Kasten on its own. Use the same wallet on both by restoring your recovery phrase.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px;margin-top:52px">
+<div style="border-radius:24px;border:1px solid rgba(255,255,255,.08);background:#111716;padding:32px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;gap:12px">
+<span style="width:46px;height:46px;border-radius:13px;background:rgba(62,224,189,.1);color:#3EE0BD;display:grid;place-items:center">{{ ico.monitorLg }}</span>
+<span style="flex:1"><span style="display:block;font:600 21px/1.2 'Inter Tight',sans-serif;letter-spacing:-.02em">Desktop app</span><span style="display:block;font-size:13px;color:#7F8D89;margin-top:3px">macOS · Windows · Linux</span></span>
+</div>
+<div style="font-size:14.5px;line-height:1.65;color:#A9B6B2">The full experience with room to breathe: activity and transaction detail side by side, keyboard shortcuts, multiple wallets and accounts.</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">
+<sc-for list="{{ osBtns }}" as="o" hint-placeholder-count="3">
+<a href="#platforms" style="display:flex;align-items:center;gap:8px;padding:11px 15px;border-radius:10px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid {{ o.bd }};font-size:13.5px;font-weight:{{ o.w }}">{{ ico.download }}{{ o.label }}</a>
+</sc-for>
+</div>
+<div style="font-size:12px;color:#65726F">Checksums and release notes on every download.</div>
+</div>
+<div style="border-radius:24px;border:1px solid rgba(62,224,189,.25);background:linear-gradient(180deg,rgba(62,224,189,.06),rgba(62,224,189,.01));padding:32px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:center;gap:12px">
+<span style="width:46px;height:46px;border-radius:13px;background:rgba(62,224,189,.1);color:#3EE0BD;display:grid;place-items:center">{{ ico.chromeLg }}</span>
+<span style="flex:1"><span style="display:block;font:600 21px/1.2 'Inter Tight',sans-serif;letter-spacing:-.02em">Chrome extension</span><span style="display:block;font-size:13px;color:#7F8D89;margin-top:3px">Chrome, Brave, Edge, Arc</span></span>
+<span style="font-size:10.5px;font-weight:700;letter-spacing:.06em;padding:5px 9px;border-radius:999px;background:rgba(245,201,123,.12);color:#F5C97B">IN DEVELOPMENT</span>
+</div>
+<div style="font-size:14.5px;line-height:1.65;color:#A9B6B2">Your wallet one click from any tab. Connect to Kaspa apps and approve each request in a window that always shows which site is asking.</div>
+<div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+<div style="flex:1;min-width:220px;display:flex;align-items:center;gap:9px;padding:0 14px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#0A0E0D">
+<span style="color:#65726F;display:grid;place-items:center">{{ ico.mail }}</span>
+<input placeholder="you@example.com" style="flex:1;min-width:0;height:44px;border:none;background:none;color:#E9F0EE;font:inherit;font-size:14px;outline:none" />
+</div>
+<button style="padding:0 18px;height:46px;border-radius:10px;border:none;background:#3EE0BD;color:#04150F;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer">Notify me</button>
+</div>
+<div style="font-size:12px;color:#65726F">One email when it’s live on the Chrome Web Store. Nothing else.</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="faq" style="max-width:860px;margin:0 auto;padding:100px 28px 80px">
+<div style="text-align:center;margin-bottom:40px">
+<div style="font:700 11px/1 'Inter',sans-serif;letter-spacing:.16em;color:#3EE0BD;margin-bottom:14px">FAQ</div>
+<h2 style="margin:0;font:600 clamp(30px,3.6vw,40px)/1.08 'Inter Tight',sans-serif;letter-spacing:-.04em">Questions, answered plainly.</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ faq }}" as="q" hint-placeholder-count="6">
+<details style="border-radius:14px;border:1px solid rgba(255,255,255,.08);background:#0F1514;padding:0 22px">
+<summary style="display:flex;align-items:center;gap:14px;padding:20px 0;cursor:pointer;font-size:15.5px;font-weight:600">
+<span style="flex:1">{{ q.q }}</span><span style="color:#3EE0BD;display:grid;place-items:center">{{ ico.plus }}</span>
+</summary>
+<div style="padding:0 0 22px;font-size:14.5px;line-height:1.7;color:#A9B6B2">{{ q.a }}</div>
+</details>
+</sc-for>
+</div>
+</section>
+
+<section id="support" style="max-width:1200px;margin:0 auto;padding:20px 28px 110px">
+<div style="position:relative;overflow:hidden;border-radius:32px;border:1px solid rgba(62,224,189,.2);background:#0F2420;padding:clamp(36px,6vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:40px;align-items:center">
+<div style="position:absolute;width:700px;height:700px;right:-200px;top:-360px;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, rgba(62,224,189,.22), transparent 70%);animation:lpDrift 22s ease-in-out infinite;pointer-events:none"></div>
+<div style="position:relative">
+<h2 style="margin:0;font:600 clamp(34px,4.4vw,52px)/1.02 'Inter Tight',sans-serif;letter-spacing:-.045em;text-wrap:balance">Hold your own Kaspa.</h2>
+<p style="margin:16px 0 0;font-size:16.5px;line-height:1.6;color:#B9C7C2;max-width:440px">Free to download. Set up in about a minute.</p>
+</div>
+<div style="position:relative;display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+<div style="display:flex;flex-wrap:wrap;gap:12px">
+<a href="#platforms" style="display:flex;align-items:center;gap:10px;padding:15px 22px;border-radius:12px;background:#3EE0BD;color:#04150F;font-size:15px;font-weight:700">{{ ico.monitor }}Download for desktop</a>
+<a href="#platforms" style="display:flex;align-items:center;gap:10px;padding:15px 22px;border-radius:12px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);color:#E9F0EE;font-size:15px;font-weight:600">{{ ico.chrome }}Chrome extension</a>
+</div>
+<a href="#support" style="display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;margin-top:6px">Need help with recovery or a transaction? Visit support {{ ico.arrowUR }}</a>
+</div>
+</div>
+</section>
+
+<footer style="border-top:1px solid rgba(255,255,255,.07)">
+<div style="max-width:1200px;margin:0 auto;padding:48px 28px 56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:32px">
+<div style="grid-column:span 2;min-width:0">
+<div style="display:flex;align-items:center;gap:10px">
+<span style="width:28px;height:28px;border-radius:8px;overflow:hidden;display:block"><svg width="28" height="28" viewBox="0 0 28 28" style="display:block"><use href="#lpIco" width="28" height="28"></use></svg></span>
+<span style="font:600 17px/1 'Inter Tight',sans-serif;letter-spacing:-.03em"><span style="color:#3EE0BD">Kas</span>ten</span>
+</div>
+<div style="font-size:13px;color:#7F8D89;margin-top:14px;line-height:1.6;max-width:300px">An independent self-custody wallet for Kaspa.</div>
+<div style="font-size:12.5px;color:#65726F;margin-top:18px">© 2026 <span style="font-weight:700;color:#A9B6B2;letter-spacing:.04em">GHOSTDAGGER</span></div>
+</div>
+<sc-for list="{{ footCols }}" as="c" hint-placeholder-count="3">
+<div>
+<div style="font:700 10.5px/1 'Inter',sans-serif;letter-spacing:.14em;color:#65726F;margin-bottom:14px">{{ c.h }}</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ c.links }}" as="l" hint-placeholder-count="3">
+<a href="#top" style="font-size:13.5px;color:#A9B6B2">{{ l }}</a>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="max-width:1200px;margin:0 auto;padding:0 28px 36px;font-size:12px;color:#65726F;line-height:1.6">Kasten is independent software and is not affiliated with the Kaspa core developers. Your recovery phrase is the only way to restore your wallet; we cannot recover it for you.</div>
+</footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    if (window.lucide) { this.forceUpdate(); return; }
+    let s = document.getElementById('lucide-umd');
+    if (!s) {
+      s = document.createElement('script');
+      s.id = 'lucide-umd';
+      s.src = 'https://unpkg.com/lucide@0.470.0/dist/umd/lucide.js';
+      document.head.appendChild(s);
+    }
+    s.addEventListener('load', () => this.forceUpdate());
+    setTimeout(() => this.forceUpdate(), 1200);
+  }
+
+  icon(names, size, sw) {
+    const L = window.lucide;
+    const box = { width: size || 16, height: size || 16, display: 'block', flex: 'none' };
+    if (!L || !L.icons) return React.createElement('span', { style: box });
+    let node = null;
+    for (const n of [].concat(names)) { if (L.icons[n]) { node = L.icons[n]; break; } }
+    if (!node) return React.createElement('span', { style: box });
+    const kids = typeof node[0] === 'string' ? (node[2] || []) : node;
+    return React.createElement('svg', {
+      width: size || 16, height: size || 16, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor',
+      strokeWidth: sw || 1.9, strokeLinecap: 'round', strokeLinejoin: 'round', style: { display: 'block', flex: 'none' }
+    }, kids.map((c, i) => React.createElement(c[0], Object.assign({ key: i }, c[1]))));
+  }
+
+  renderVals() {
+    const I = (n, z, w) => this.icon(n, z, w);
+    return {
+      ico: {
+        download: I('Download', 15), monitor: I('Monitor', 17), monitorLg: I('Monitor', 22), chrome: I(['Chrome', 'Globe'], 17),
+        chromeLg: I(['Chrome', 'Globe'], 22), check: I('Check', 15, 2.2), lock: I('Lock', 15), shield: I('ShieldCheck', 17),
+        radio: I(['RadioTower', 'Radio'], 17), eyeOff: I('EyeOff', 17), dot: I('Dot', 15, 3), arrowUR: I('ArrowUpRight', 15),
+        plus: I('Plus', 17), mail: I('Mail', 16)
+      },
+      trust: ['No account or email', 'No tracking', 'Free'],
+      pillars: [
+        { icon: I('KeyRound', 17), k: 'Self-custody', d: 'Only you hold the keys' },
+        { icon: I('HardDrive', 17), k: 'Encrypted locally', d: 'Protected by your password' },
+        { icon: I('ShieldCheck', 17), k: 'Explicit approvals', d: 'Password to sign, every time' },
+        { icon: I('Layers', 17), k: 'Desktop and browser', d: 'One design, two platforms' }
+      ],
+      features: [
+        { icon: I('ArrowUpRight', 20), k: 'Send with a review step', d: 'Compose, then check the address, amount and fee on a separate screen before you type your password to sign.' },
+        { icon: I('QrCode', 20), k: 'Receive in one click', d: 'A fresh address and QR code every time, plus payment links with an amount built in.' },
+        { icon: I('Wallet', 20), k: 'Multiple wallets and accounts', d: 'Keep everyday spending, savings and mining apart, and switch between them from the title bar.' },
+        { icon: I('Globe', 20), k: 'Connect to Kaspa apps', d: 'Sites can ask to connect and request a signature. You see who is asking and what they can do, and revoke any time.' },
+        { icon: I('RotateCcw', 20), k: 'Restore without the struggle', d: 'Paste a 12- or 24-word phrase and every word fills in at once, with suggestions and a check on each word.' },
+        { icon: I('History', 20), k: 'Clear activity', d: 'Every transaction with its status, fee and confirmations, and the site that requested it.' }
+      ],
+      steps: [
+        { n: '1', k: 'Name it and set a password', d: 'The password encrypts your wallet on this device.', bar: 'rgba(62,224,189,.35)' },
+        { n: '2', k: 'Write down 12 words', d: 'Your recovery phrase, on paper. It’s the only backup.', bar: 'rgba(62,224,189,.35)' },
+        { n: '3', k: 'Confirm three of them', d: 'Tap to check, no typing. Then you’re in.', bar: 'transparent' }
+      ],
+      local: [
+        'Your recovery phrase and private keys, encrypted with your password',
+        'Wallet names, accounts and address labels',
+        'Which sites you’ve connected and what they’re allowed to do',
+        'Your settings and preferences'
+      ],
+      network: [
+        'A Kaspa node, to read balances and broadcast the transactions you sign',
+        'A price source, to show approximate USD values (can be turned off)',
+        'You can point Kasten at your own node in Settings'
+      ],
+      never: ['Email or phone', 'Analytics or tracking', 'Your IP linked to addresses', 'Recovery phrases', 'Passwords'],
+      osBtns: [
+        { label: 'macOS', bg: '#3EE0BD', fg: '#04150F', bd: '#3EE0BD', w: '700' },
+        { label: 'Windows', bg: 'transparent', fg: '#E9F0EE', bd: 'rgba(255,255,255,.14)', w: '600' },
+        { label: 'Linux', bg: 'transparent', fg: '#E9F0EE', bd: 'rgba(255,255,255,.14)', w: '600' }
+      ],
+      faq: [
+        { q: 'Is Kasten free?', a: 'Yes. Kasten doesn’t charge for downloads or transactions. You only pay the Kaspa network fee, which goes to the network, not to us.' },
+        { q: 'What happens if I lose my password?', a: 'There is no password reset, because we never have a copy. Reinstall Kasten or use another device, restore from your 12 or 24 words, and set a new password.' },
+        { q: 'What if I lose my recovery phrase?', a: 'While you can still unlock Kasten, write down a new copy from Settings → Security → Show recovery phrase. If both the phrase and the device are lost, the funds cannot be recovered by anyone.' },
+        { q: 'Can I move a wallet from another app?', a: 'Yes. Choose “I have a recovery phrase” and enter any standard 12- or 24-word Kaspa phrase.' },
+        { q: 'Do the desktop app and the extension share a wallet?', a: 'Each one is complete on its own and keeps its own encrypted copy. To use the same wallet in both, restore it from your recovery phrase in each.' },
+        { q: 'Can a website take my KAS?', a: 'No. A connected site can see your address and ask you to approve a transaction. Nothing is sent until you review it and type your password.' }
+      ],
+      footCols: [
+        { h: 'PRODUCT', links: ['Desktop app', 'Chrome extension', 'Release notes'] },
+        { h: 'HELP', links: ['Support', 'Recovery guide', 'Contact'] },
+        { h: 'LEGAL', links: ['Privacy policy', 'Terms', 'GHOSTDAGGER ↗'] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

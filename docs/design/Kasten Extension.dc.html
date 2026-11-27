@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{background:#0A0D0C}
+body{margin:0;background:#0A0D0C;font-family:'Inter',system-ui,sans-serif;color:#E9F0EE;-webkit-font-smoothing:antialiased}
+a{color:#3EE0BD;text-decoration:none}a:hover{color:#E9F0EE}
+</style>
+</helmet>
+
+<div style="padding:56px 60px 110px;display:flex;flex-direction:column;gap:70px">
+
+<section style="display:flex;flex-direction:column;gap:26px">
+<div>
+<div style="font:700 10px/1 'Inter',sans-serif;letter-spacing:.18em;color:#3EE0BD;margin-bottom:10px">KASTEN · BROWSER EXTENSION</div>
+<h1 style="margin:0 0 8px;font:600 32px/1.1 'Inter Tight',sans-serif;letter-spacing:-.035em">The same wallet, one click from any tab</h1>
+<p style="margin:0;font-size:13.5px;color:#94A29E;max-width:720px;line-height:1.65">A standalone Kasten for the Chrome Web Store — no desktop app required. Same look and safety model, built for a 360 × 600 popup, setup included. What the browser adds: sites can connect and ask you to sign, and every request opens in its own window that names the site.</p>
+</div>
+
+<div style="width:1240px;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.09);box-shadow:0 50px 100px -30px rgba(0,0,0,.85);background:#F4F5F7">
+<div style="height:40px;background:#DEE1E6;display:flex;align-items:flex-end;padding:0 12px;gap:10px">
+<span style="display:flex;gap:8px;align-self:center;margin-right:8px"><span style="width:12px;height:12px;border-radius:50%;background:#FF5F57"></span><span style="width:12px;height:12px;border-radius:50%;background:#FEBC2E"></span><span style="width:12px;height:12px;border-radius:50%;background:#28C840"></span></span>
+<div style="height:32px;width:230px;background:#FFFFFF;border-radius:9px 9px 0 0;display:flex;align-items:center;gap:8px;padding:0 12px">
+<span style="width:16px;height:16px;border-radius:4px;background:#7B61FF;color:#fff;display:grid;place-items:center;font:700 9px/1 'Inter Tight',sans-serif">K</span>
+<span style="font-size:12px;color:#202124;flex:1">KasSwap</span><span style="font-size:12px;color:#5F6368">×</span>
+</div>
+<div style="height:32px;width:200px;display:flex;align-items:center;gap:8px;padding:0 12px">
+<span style="width:16px;height:16px;border-radius:4px;background:#B9BEC6"></span><span style="font-size:12px;color:#5F6368">Kaspa Explorer</span>
+</div>
+</div>
+<div style="height:44px;background:#FFFFFF;display:flex;align-items:center;gap:10px;padding:0 12px;border-bottom:1px solid #E3E5E8">
+<span style="font-size:15px;color:#5F6368;width:22px;text-align:center">←</span><span style="font-size:15px;color:#BDC1C6;width:22px;text-align:center">→</span><span style="font-size:14px;color:#5F6368;width:22px;text-align:center">↻</span>
+<div style="flex:1;height:30px;border-radius:999px;background:#F1F3F4;display:flex;align-items:center;gap:8px;padding:0 14px">
+<span style="width:10px;height:12px;border:2px solid #5F6368;border-radius:3px 3px 2px 2px;display:block"></span>
+<span style="font-size:13px;color:#202124">app.kasswap.example</span><span style="font-size:13px;color:#80868B">/swap</span>
+</div>
+<span style="width:26px;height:26px;border-radius:6px;background:#E8EAED"></span>
+<div style="position:relative;width:32px;height:32px;border-radius:8px;background:#E6F7F2;display:grid;place-items:center;box-shadow:inset 0 0 0 1.5px #0FB894">
+<span style="width:20px;height:20px;border-radius:5px;overflow:hidden;display:block"><svg width="20" height="20" viewBox="0 0 1024 1024" style="display:block"><rect width="1024" height="1024" fill="#0E332D"></rect><rect x="84" y="296" width="52" height="140" rx="22" fill="#E3ECE8"></rect><rect x="84" y="588" width="52" height="140" rx="22" fill="#E3ECE8"></rect><rect x="392" y="350" width="240" height="320" rx="58" fill="#22CDA8"></rect><circle cx="512" cy="470" r="42" fill="#06201B"></circle><rect x="491" y="488" width="42" height="104" rx="21" fill="#06201B"></rect></svg></span>
+<span style="position:absolute;top:-4px;right:-4px;min-width:15px;height:15px;border-radius:8px;background:#E8693A;color:#fff;font:700 9px/15px 'Inter',sans-serif;text-align:center;padding:0 3px">1</span>
+</div>
+<span style="width:26px;height:26px;border-radius:50%;background:#C9CDD3"></span>
+</div>
+
+<div style="height:700px;position:relative;background:#F6F5FB;overflow:hidden">
+<div style="height:60px;display:flex;align-items:center;gap:26px;padding:0 36px;border-bottom:1px solid #E7E4F2;background:#FFFFFF">
+<span style="display:flex;align-items:center;gap:9px;font:700 16px/1 'Inter Tight',sans-serif;color:#1B1530"><span style="width:26px;height:26px;border-radius:7px;background:#7B61FF;color:#fff;display:grid;place-items:center;font-size:13px">K</span>KasSwap</span>
+<span style="font-size:13px;color:#1B1530;font-weight:600">Swap</span><span style="font-size:13px;color:#7A7490">Pools</span><span style="font-size:13px;color:#7A7490">Tokens</span>
+<span style="flex:1"></span>
+<span style="padding:9px 16px;border-radius:999px;background:#EDE9FF;color:#5A44D6;font-size:13px;font-weight:600">Connecting…</span>
+</div>
+<div style="position:absolute;left:150px;top:130px;width:440px;border-radius:22px;background:#FFFFFF;box-shadow:0 20px 50px -20px rgba(40,20,90,.25);padding:22px;display:flex;flex-direction:column;gap:10px">
+<div style="font:600 18px/1 'Inter Tight',sans-serif;color:#1B1530;margin-bottom:6px">Swap</div>
+<div style="border-radius:16px;background:#F6F5FB;padding:16px;display:flex;justify-content:space-between;align-items:center"><span style="font:600 28px/1 'Inter Tight',sans-serif;color:#1B1530">250</span><span style="padding:7px 12px;border-radius:999px;background:#FFFFFF;font-size:13px;font-weight:600;color:#1B1530">KAS</span></div>
+<div style="border-radius:16px;background:#F6F5FB;padding:16px;display:flex;justify-content:space-between;align-items:center"><span style="font:600 28px/1 'Inter Tight',sans-serif;color:#9A94AE">41,320</span><span style="padding:7px 12px;border-radius:999px;background:#FFFFFF;font-size:13px;font-weight:600;color:#1B1530">NACHO</span></div>
+<div style="margin-top:6px;padding:15px;border-radius:14px;background:#7B61FF;color:#fff;text-align:center;font-size:14px;font-weight:700">Connect wallet</div>
+</div>
+<div style="position:absolute;inset:0;background:rgba(20,16,40,.18)"></div>
+
+<div style="position:absolute;top:8px;right:46px;border-radius:12px;overflow:hidden;box-shadow:0 30px 70px -18px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.12)">
+<dc-import name="KastenPopup" screen="connect" theme="dark" hint-size="360px,600px"></dc-import>
+</div>
+</div>
+</div>
+<div style="font-size:12px;color:#65726F">Hero: a site asks to connect. The badge on the toolbar icon counts pending requests; the request window always shows the full origin with the registrable domain emphasised.</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:20px">
+<div>
+<div style="font:700 10px/1 'Inter',sans-serif;letter-spacing:.18em;color:#3EE0BD;margin-bottom:10px">SETUP · IN THE POPUP</div>
+<h2 style="margin:0 0 6px;font:600 24px/1.1 'Inter Tight',sans-serif;letter-spacing:-.03em">Create a wallet</h2>
+<p style="margin:0;font-size:13px;color:#94A29E;max-width:700px;line-height:1.6">The whole flow runs inside the popup, laid out like a phone: a thin progress header, content in the middle, one action pinned to the bottom. These are the patterns a future mobile app would reuse. New and Restore in the wallet switcher open the same flows.</p>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:28px">
+<sc-for list="{{ createFrames }}" as="f" hint-placeholder-count="6">
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:baseline;gap:8px"><span style="font:600 10.5px/1 'JetBrains Mono',monospace;padding:3px 7px;border-radius:5px;background:rgba(255,255,255,.09)">{{ f.id }}</span><span style="font-size:12.5px;font-weight:600">{{ f.label }}</span></div>
+<div style="border-radius:12px;overflow:hidden;box-shadow:0 26px 60px -24px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.07)">
+<dc-import name="KastenPopup" screen="{{ f.screen }}" theme="dark" hint-size="360px,600px"></dc-import>
+</div>
+<div style="width:360px;font-size:11.5px;color:#65726F;line-height:1.55">{{ f.note }}</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:20px">
+<div>
+<div style="font:700 10px/1 'Inter',sans-serif;letter-spacing:.18em;color:#3EE0BD;margin-bottom:10px">SETUP · IN THE POPUP</div>
+<h2 style="margin:0 0 6px;font:600 24px/1.1 'Inter Tight',sans-serif;letter-spacing:-.03em">Restore from a recovery phrase</h2>
+<p style="margin:0;font-size:13px;color:#94A29E;max-width:700px;line-height:1.6">Works with any 12- or 24-word phrase, including one from the Kasten desktop app. Suggestions sit in a bar above the button, like a phone keyboard, so they never cover the grid.</p>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:28px">
+<sc-for list="{{ restoreFrames }}" as="f" hint-placeholder-count="4">
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:baseline;gap:8px"><span style="font:600 10.5px/1 'JetBrains Mono',monospace;padding:3px 7px;border-radius:5px;background:rgba(255,255,255,.09)">{{ f.id }}</span><span style="font-size:12.5px;font-weight:600">{{ f.label }}</span></div>
+<div style="border-radius:12px;overflow:hidden;box-shadow:0 26px 60px -24px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.07)">
+<dc-import name="KastenPopup" screen="{{ f.screen }}" theme="dark" hint-size="360px,600px"></dc-import>
+</div>
+<div style="width:360px;font-size:11.5px;color:#65726F;line-height:1.55">{{ f.note }}</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:20px">
+<div>
+<div style="font:700 10px/1 'Inter',sans-serif;letter-spacing:.18em;color:#3EE0BD;margin-bottom:10px">WALLET</div>
+<h2 style="margin:0 0 6px;font:600 24px/1.1 'Inter Tight',sans-serif;letter-spacing:-.03em">Everyday use</h2>
+<p style="margin:0;font-size:13px;color:#94A29E;max-width:700px;line-height:1.6">Every frame is live — click through. The header always shows which site this tab is connected to.</p>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:28px">
+<sc-for list="{{ walletFrames }}" as="f" hint-placeholder-count="6">
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:baseline;gap:8px"><span style="font:600 10.5px/1 'JetBrains Mono',monospace;padding:3px 7px;border-radius:5px;background:rgba(255,255,255,.09)">{{ f.id }}</span><span style="font-size:12.5px;font-weight:600">{{ f.label }}</span></div>
+<div style="border-radius:12px;overflow:hidden;box-shadow:0 26px 60px -24px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.07)">
+<dc-import name="KastenPopup" screen="{{ f.screen }}" theme="dark" hint-size="360px,600px"></dc-import>
+</div>
+<div style="width:360px;font-size:11.5px;color:#65726F;line-height:1.55">{{ f.note }}</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:20px">
+<div>
+<div style="font:700 10px/1 'Inter',sans-serif;letter-spacing:.18em;color:#3EE0BD;margin-bottom:10px">SITES</div>
+<h2 style="margin:0 0 6px;font:600 24px/1.1 'Inter Tight',sans-serif;letter-spacing:-.03em">What only an extension can do</h2>
+<p style="margin:0;font-size:13px;color:#94A29E;max-width:700px;line-height:1.6">Connect, sign, revoke. Requests open in their own window, so a site can’t draw over them, and signing still takes your password.</p>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:28px">
+<sc-for list="{{ siteFrames }}" as="f" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:baseline;gap:8px"><span style="font:600 10.5px/1 'JetBrains Mono',monospace;padding:3px 7px;border-radius:5px;background:rgba(255,255,255,.09)">{{ f.id }}</span><span style="font-size:12.5px;font-weight:600">{{ f.label }}</span></div>
+<div style="border-radius:12px;overflow:hidden;box-shadow:0 26px 60px -24px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.07)">
+<dc-import name="KastenPopup" screen="{{ f.screen }}" theme="dark" hint-size="360px,600px"></dc-import>
+</div>
+<div style="width:360px;font-size:11.5px;color:#65726F;line-height:1.55">{{ f.note }}</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:20px">
+<div>
+<div style="font:700 10px/1 'Inter',sans-serif;letter-spacing:.18em;color:#3EE0BD;margin-bottom:10px">LIGHT MODE</div>
+<h2 style="margin:0 0 6px;font:600 24px/1.1 'Inter Tight',sans-serif;letter-spacing:-.03em">Follows the browser theme</h2>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:28px;padding:30px;border-radius:20px;background:#E4E9E6;width:fit-content">
+<sc-for list="{{ lightFrames }}" as="f" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:baseline;gap:8px"><span style="font:600 10.5px/1 'JetBrains Mono',monospace;padding:3px 7px;border-radius:5px;background:rgba(0,0,0,.07);color:#0C1A17">{{ f.id }}</span><span style="font-size:12.5px;font-weight:600;color:#0C1A17">{{ f.label }}</span></div>
+<div style="border-radius:12px;overflow:hidden;box-shadow:0 26px 50px -26px rgba(10,40,34,.5),0 0 0 1px rgba(0,0,0,.08)">
+<dc-import name="KastenPopup" screen="{{ f.screen }}" theme="light" hint-size="360px,600px"></dc-import>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="max-width:1240px;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:#111716;padding:26px 30px">
+<div style="font:600 15px/1.2 'Inter Tight',sans-serif;letter-spacing:-.015em;margin-bottom:6px">Popup vs expanded view</div>
+<div style="font-size:12.5px;color:#94A29E;margin-bottom:18px;line-height:1.6">A standalone product with its own encrypted storage. To use the same wallet in the desktop app, restore it there from your recovery phrase.</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px">
+<div><div style="font:700 9.5px/1 'Inter',sans-serif;letter-spacing:.14em;color:#3EE0BD;margin-bottom:10px">EVERYTHING IN THE POPUP</div><div style="font-size:12.5px;color:#94A29E;line-height:1.85">Create, back up, check<br />Restore from 12 / 24 words<br />Balance, send, receive, activity<br />Wallets, accounts, lock</div></div>
+<div><div style="font:700 9.5px/1 'Inter',sans-serif;letter-spacing:.14em;color:#3EE0BD;margin-bottom:10px">EXTENSION ONLY</div><div style="font-size:12.5px;color:#94A29E;line-height:1.85">Connect requests per site<br />Transaction requests from sites<br />Connected-sites list and revoke<br />Toolbar badge, Alt + K shortcut</div></div>
+<div><div style="font:700 9.5px/1 'Inter',sans-serif;letter-spacing:.14em;color:#3EE0BD;margin-bottom:10px">EXPANDED VIEW · OPTIONAL</div><div style="font-size:12.5px;color:#94A29E;line-height:1.85">“Open Kasten in a tab”<br />The same screens with more room<br />Handy for long histories<br />Never required for any task</div></div>
+</div>
+</section>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      createFrames: [
+        { id: 'C1', screen: 'welcome', label: 'First run', note: 'Right after install. No desktop app, no account — the extension is a complete Kasten on its own.' },
+        { id: 'C2', screen: 'create', label: 'Name and lock', note: 'Nickname plus a password for this browser. The progress bar shows three steps up front.' },
+        { id: 'C3', screen: 'seed', label: 'Write down · hidden', note: 'Words stay blurred until you choose to reveal them.' },
+        { id: 'C4', screen: 'seedRevealed', label: 'Write down · revealed', note: 'Two columns, numbered, all twelve visible without scrolling. Copying is off.' },
+        { id: 'C5', screen: 'verify', label: 'Quick check', note: 'Tap, don’t type. A wrong pick turns red in place. Finish unlocks at 3 of 3.' },
+        { id: 'C6', screen: 'done', label: 'Ready', note: 'Ends by showing where Kasten lives: pin it from the puzzle-piece menu.' }
+      ],
+      restoreFrames: [
+        { id: 'R1', screen: 'restore', label: 'Enter phrase · 12', note: 'Two-column grid, auto-advance, paste fills every cell. Ticks confirm valid words.' },
+        { id: 'R2', screen: 'restore24', label: 'Enter phrase · 24', note: 'The grid scrolls; suggestions and the Continue button stay pinned above the fold.' },
+        { id: 'R3', screen: 'createRestore', label: 'Name and lock', note: 'Same form as create, step 2 of 2. A restored wallet needs a password for this browser too.' },
+        { id: 'R4', screen: 'doneRestore', label: 'Restored', note: 'Same finish as create, so both paths land in the same place.' }
+      ],
+      walletFrames: [
+        { id: 'E1', screen: 'unlock', label: 'Unlock', note: 'Auto-locks when the browser is idle. Switching wallets is possible without unlocking first.' },
+        { id: 'E2', screen: 'home', label: 'Home', note: 'Balance, three actions, the current tab’s connection, and the last three transactions.' },
+        { id: 'E3', screen: 'send', label: 'Send · compose', note: 'The same two-step flow as the desktop app. Saved contacts appear as you type.' },
+        { id: 'E4', screen: 'confirm', label: 'Send · confirm', note: 'Password typed to sign, exactly as on desktop.' },
+        { id: 'E5', screen: 'receive', label: 'Receive', note: 'QR with the Kasten mark in the centre, and a one-tap copy.' },
+        { id: 'E6', screen: 'activity', label: 'Activity', note: 'Transactions started by a site name the site that asked for them.' },
+        { id: 'E7', screen: 'settings', label: 'Settings', note: 'Browser-relevant settings first. “Open Kasten in a tab” shows the same popup screens with more room.' }
+      ],
+      siteFrames: [
+        { id: 'S1', screen: 'connect', label: 'Connect request', note: 'Says plainly what the site can and can’t do. You choose which account it sees.' },
+        { id: 'S2', screen: 'sign', label: 'Transaction request', note: 'Amount first, then where it goes and why. Warns on a first-time address. Approve stays disabled until the password is in.' },
+        { id: 'S3', screen: 'sites', label: 'Connected sites', note: 'Current tab pinned on top. Revoke per site, or disconnect everything at once.' }
+      ],
+      lightFrames: [
+        { id: 'L1', screen: 'home', label: 'Home' },
+        { id: 'L2', screen: 'sign', label: 'Transaction request' },
+        { id: 'L3', screen: 'unlock', label: 'Unlock' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
